@@ -67,6 +67,11 @@ async function baseapi(req, res) {
                     <td>To register new users</td>
                 </tr>
                 <tr>
+                    <td>Login User</td>
+                    <td>/LoginUser</td>
+                    <td>To Login the users</td>
+                </tr>
+                <tr>
                     <td>All Users</td>
                     <td>/AllUsers</td>
                     <td>To show the details of all users</td>

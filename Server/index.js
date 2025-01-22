@@ -3,9 +3,11 @@ const cors = require("cors");
 const Base = require('./routes/Base')
 const RegisterUser = require('./routes/RegisterUser')
 const AllUser = require('./routes/AllUsers')
+const Login = require('./routes/Login')
 
 const port = 3000
 const app = express();
+require('dotenv').config();
 
 // middleware
 app.use(cors());
@@ -19,6 +21,7 @@ require("./db/conn");
 app.use('', Base);
 app.use('/api', RegisterUser)
 app.use('/api',AllUser)
+app.use('/api', Login)
 
 
 // Start the server
