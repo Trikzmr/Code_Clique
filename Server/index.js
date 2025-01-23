@@ -4,6 +4,7 @@ const Base = require('./routes/Base')
 const RegisterUser = require('./routes/RegisterUser')
 const AllUser = require('./routes/AllUsers')
 const Login = require('./routes/Login')
+const postdata = require('./routes/postData')
 
 const port = 3000
 const app = express();
@@ -22,6 +23,8 @@ app.use('', Base);
 app.use('/api', RegisterUser)
 app.use('/api',AllUser)
 app.use('/api', Login)
+app.use('/api', postdata)
+
 
 
 // Start the server
