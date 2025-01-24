@@ -22,8 +22,19 @@
 body {
 	background: var(--second-color);
 }
-
-
+.hero{
+    height : 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 48px;
+    flex-direction: column;
+}
+.heroSub{
+    font-size: 24px;
+}
 .content {
 	width: 100%;
 	height: auto;
@@ -41,6 +52,7 @@ body {
 .header {
 	height: 100vh;
 	overflow: hidden;
+    
 }
 
 .header .parallax__wrapp {

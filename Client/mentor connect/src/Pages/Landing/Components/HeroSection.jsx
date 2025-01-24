@@ -60,14 +60,23 @@ const HeroSection = () => {
       });
 
       // Additional animations
-      gsap.to(".title-p", {
+      gsap.to(".heroTitle", {
+        ".heroTitle": {
+            opacity: 1, // Initially transparent
+            scale: 1, // Slightly shrunk
+            filter: "blur(0)", // Blurred appearance
+        },
         scrollTrigger: {
           trigger: "header.header",
           start: "top top",
           end: "bottom top",
           scrub: true,
         },
-        yPercent: 100,
+        yPercent: -250,
+        opacity: 0, // Initially transparent
+        scale: 0.8, // Slightly shrunk
+        filter: "blur(5px)", // Blurred appearance
+    ease: "power1.out",
       });
 
       gsap.to(".title__img img", {
@@ -168,7 +177,16 @@ const HeroSection = () => {
     <div className="hero-container">
       <div className="hero-top">
         <header className="header gsap__anim">
-          <div className="parallax__wrapp">
+            <div className="hero">
+                <div className="heroTitle">
+                    Bring Your Ideas to Production
+                </div>
+                <div className="heroSub">
+                    Find the teams to work together
+                </div>
+            </div>
+            
+          {/* <div className="parallax__wrapp">
             <div className="header__bg">
               <img src="img/pirat1.png" alt="" />
               <img src="img/pirat1.png" alt="" />
@@ -178,7 +196,7 @@ const HeroSection = () => {
                 Infinite<span className="stroke">Scroll</span>
               </h1>
             </div>
-          </div>
+          </div> */}
         </header>
       </div>
       <div className="hero-bottom">
