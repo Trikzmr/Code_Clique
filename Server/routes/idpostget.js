@@ -1,14 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const user = require('../model/post');
+const  data = require('../model/post');
 
-router.get('/getdata',api)
+router.post('/idpost',api)
 
 async function api(req,res){
+    const {_id} =req.body;
     try {
-        let data = await user.find();
-        console.log(data);
-        res.json(data);
+        let user = await data.find({_id});
+        console.log(user);
+        res.json(user);
     } catch (error) {
         res.json(error);
     }
