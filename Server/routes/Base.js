@@ -62,19 +62,29 @@ async function baseapi(req, res) {
                     <th>API Description</th>
                 </tr>
                 <tr>
-                    <td>Register User</td>
+                    <td>RegisterUser</td>
                     <td>/RegisterUser</td>
                     <td>To register new users</td>
                 </tr>
                 <tr>
-                    <td>Login User</td>
+                    <td>Login</td>
                     <td>/LoginUser</td>
                     <td>To Login the users</td>
                 </tr>
                 <tr>
-                    <td>All Users</td>
+                    <td>AllUser</td>
                     <td>/AllUsers</td>
                     <td>To show the details of all users</td>
+                </tr>
+                 <tr>
+                    <td>postData</td>
+                    <td>/postdata</td>
+                    <td>create a new project post</td>
+                </tr>
+                 <tr>
+                    <td>getdata</td>
+                    <td>/getdata</td>
+                    <td>get all project detail </td>
                 </tr>
             </table>
         </body>
