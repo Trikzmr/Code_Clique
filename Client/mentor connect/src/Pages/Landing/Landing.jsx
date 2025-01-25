@@ -1,5 +1,6 @@
 import React from 'react'
 import HeroSection from './Components/HeroSection'
+import Test from '../../../Test'
 
 const Landing = () => {
   return (
@@ -9,6 +10,7 @@ const Landing = () => {
         </div>
         
         <h1>Test</h1>
+        <Test/>
     </>
   )
 }

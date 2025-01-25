@@ -61,22 +61,30 @@ const HeroSection = () => {
 
       // Additional animations
       gsap.to(".heroTitle", {
-        ".heroTitle": {
-            opacity: 1, // Initially transparent
-            scale: 1, // Slightly shrunk
-            filter: "blur(0)", // Blurred appearance
-        },
         scrollTrigger: {
           trigger: "header.header",
           start: "top top",
           end: "bottom top",
           scrub: true,
         },
-        yPercent: -250,
+        yPercent: 0,
         opacity: 0, // Initially transparent
         scale: 0.8, // Slightly shrunk
-        filter: "blur(5px)", // Blurred appearance
-    ease: "power1.out",
+        //filter: "blur(5px)", // Blurred appearance
+        ease: "power1.out",
+      });
+      gsap.to(".heroSub", {
+        scrollTrigger: {
+          trigger: "header.header",
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+        yPercent: 0,
+        opacity: 0, // Initially transparent
+        scale: 0.8, // Slightly shrunk
+        //filter: "blur(5px)", // Blurred appearance
+        ease: "power1.out",
       });
 
       gsap.to(".title__img img", {
