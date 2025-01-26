@@ -6,14 +6,19 @@ const AllUser = require('./routes/AllUsers')
 const Login = require('./routes/Login')
 const postData = require('./routes/postData')
 const getdata = require('./routes/getdata')
+const cookieParser = require("cookie-parser");
 
 const port = 3000
 const app = express();
 require('dotenv').config();
 
 // middleware
-app.use(cors());
+app.use(cors({ 
+  origin: "http://localhost:5173",
+  credentials: true, 
+}));
 app.use(express.json());
+app.use(cookieParser());
 
 // Connect to MongoDB 
 require("./db/conn");
