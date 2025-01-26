@@ -3,6 +3,7 @@ const  router = express.Router();
 const User = require('../model/userModel');
 const jwt = require('jsonwebtoken'); 
 const bcrypt = require('bcryptjs');
+const cookieParser = require("cookie-parser");
 
  
 
@@ -23,10 +24,14 @@ const bcrypt = require('bcryptjs');
     
         // Generate a JWT token
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '6h' });
-    
-        // Respond with the token and user info (excluding password)
+
+        //send cookie for session mangement
+        res.cookie("token", token, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === "production", // Enable secure flag in production
+      });
         res.json({
-          token,user
+          user
         })
       } catch (error) {
         console.error(error.message);

@@ -3,6 +3,52 @@ import { FcGoogle } from "react-icons/fc";
 import { FaApple } from "react-icons/fa";
 
 const LoginArea = () => {
+  let loginData;
+
+
+  //login api
+
+  const apifetch = async() => {
+
+    try {
+      const response = await fetch('http://localhost:3000/api/LoginUser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(loginData),
+        credentials: "include", // Send cookies with the request
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        //localStorage.setItem('token', data.token);
+        console.log(data);
+
+      } else {
+        // Handle login failure
+        alert(data.message || 'Login failed!');
+      }
+    } catch (error) {
+      console.error('kError during login:', error);
+      
+    }
+
+  }
+
+  //login handler
+  const HandleLogin = () => {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("pass").value;
+    loginData = {
+      Email: email,
+      Password: password
+    }
+    apifetch();
+  }
+
+
   return (
     <div className="LoginArea max-w-[404px] mx-auto mt-10 p-4">
       {/* Header Section */}
@@ -20,6 +66,7 @@ const LoginArea = () => {
             type="email"
             placeholder="Enter your email"
             className="w-full border border-gray-300 rounded-lg p-2 mt-1 text-sm focus:ring focus:ring-green-500 focus:border-green-500"
+            id="email"
           />
         </div>
 
@@ -34,6 +81,7 @@ const LoginArea = () => {
               type="password"
               placeholder="Enter your password"
               className="w-full border border-gray-300 rounded-lg p-2 mt-1 text-sm focus:ring focus:ring-green-500 focus:border-green-500"
+              id="pass"
             />
           </div>
         </div>
@@ -52,7 +100,7 @@ const LoginArea = () => {
 
         {/* Login Button */}
         <div className="LoginButton">
-          <button className="w-full bg-green-600 text-white rounded-lg py-2 text-sm font-medium hover:bg-green-700 transition">
+          <button className="w-full bg-green-600 text-white rounded-lg py-2 text-sm font-medium hover:bg-green-700 transition" onClick={HandleLogin}>
             Login
           </button>
         </div>
