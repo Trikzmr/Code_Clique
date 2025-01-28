@@ -1,11 +1,12 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaApple } from "react-icons/fa";
+import {useNavigate} from 'react-router-dom';
 
 const LoginArea = () => {
   let loginData;
 
-
+  const navigate = useNavigate();
   //login api
 
   const apifetch = async() => {
@@ -23,9 +24,7 @@ const LoginArea = () => {
       const data = await response.json();
 
       if (response.ok) {
-        //localStorage.setItem('token', data.token);
-        console.log(data);
-
+        navigate('/home');
       } else {
         // Handle login failure
         alert(data.message || 'Login failed!');

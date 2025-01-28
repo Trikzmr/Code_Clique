@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const user = require('../model/post');
+const post = require('../model/post');
+const authenticate = require('../Middleware/Authentication'); // Import the authentication middleware
 
-router.get('/getdata',api)
+router.get('/getdata',authenticate, api)
 
 async function api(req,res){
     try {
-        let data = await user.find();
+        let data = await post.find();
         console.log(data);
         res.json(data);
     } catch (error) {
