@@ -5,12 +5,13 @@ import './App.css'
 import Landing from './Pages/Landing/Landing'
 import Test from '../Test'
 import Login from './Pages/Authentication/Login'
+import Router from './Components/Router'
 
 function App() {
 
   return (
     <>
-      <Login/>
+      <Router/>
     </>
   )
 }

@@ -1,7 +1,8 @@
+//purpose: to handle routes for post data
 const express = require('express')
 const User = require('../model/post');
 const api = express.Router();
-
+const authenticate = require('../Middleware/Authentication');
 
 
 
