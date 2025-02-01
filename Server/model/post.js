@@ -16,7 +16,7 @@ const Postschema = new mongoose.Schema({
     
   },
   Category: {
-    type: Number,
+    type: String,
     
   },
   Keyskills: {

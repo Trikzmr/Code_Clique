@@ -3,7 +3,7 @@ import ExploreProject from './Components/ExploreProject'
 
 const Home = () => {
   return (
-    <>
+    <div className='home md:px-10 mx-auto py-12  '>
         <div className="homeAddNewSection">
         </div>
 
@@ -17,7 +17,7 @@ const Home = () => {
 
         <div className="homeJoinUsSection">
         </div>
-    </>
+    </div>
   )
 }
 

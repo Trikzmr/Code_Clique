@@ -7,14 +7,14 @@ const authenticate = require('../Middleware/Authentication');
 
 
 // Register Route
-api.post('/postdata', async (req, res) => {
-  const {username,title,Description,Category,Keyskills} = req.body;
+api.post('/AddProject', async (req, res) => {
+  const {username,Title,Description,Category,Keyskills} = req.body;
 
   try {
     // Create a new user
     data = new User({
         username,
-        title,
+        Title,
         Description,
         Category,
         Keyskills

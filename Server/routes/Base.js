@@ -77,18 +77,18 @@ async function baseapi(req, res) {
                     <td>To show the details of all users</td>
                 </tr>
                  <tr>
-                    <td>postData</td>
-                    <td>/postdata</td>
+                    <td>AddProject</td>
+                    <td>/AddProject</td>
                     <td>create a new project post</td>
                 </tr>
                  <tr>
-                    <td>getdata</td>
-                    <td>/getdata</td>
+                    <td>getPostdata</td>
+                    <td>/getpostdata</td>
                     <td>get all project detail </td>
                 </tr>
                 <tr>
-                    <td>idpostget</td>
-                    <td>/idpost</td>
+                    <td>getpostdatabyid</td>
+                    <td>/getpostdatabyid</td>
                     <td> post _id get all project detail </td>
                 </tr>
             </table>
