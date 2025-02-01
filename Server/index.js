@@ -4,10 +4,10 @@ const Base = require('./routes/Base')
 const RegisterUser = require('./routes/RegisterUser')
 const AllUser = require('./routes/AllUsers')
 const Login = require('./routes/Login')
-const postData = require('./routes/postData')
-const getdata = require('./routes/getdata')
+const AddProject = require('./routes/AddProject')
+const getpostdata = require('./routes/getPostdata')
 const cookieParser = require("cookie-parser");
-const idpostget = require('./routes/idpostget')
+const getpostdatabyid = require('./routes/getpostdatabyid')
 
 const port = 3000
 const app = express();
@@ -30,9 +30,9 @@ app.use('', Base);
 app.use('/api', RegisterUser)
 app.use('/api',AllUser)
 app.use('/api', Login)
-app.use('/api', postData)
-app.use('/api',getdata)
-app.use('/api',idpostget)
+app.use('/api', AddProject)
+app.use('/api',getpostdata)
+app.use('/api',getpostdatabyid)
 
 
 // Start the server

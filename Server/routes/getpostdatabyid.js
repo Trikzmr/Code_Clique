@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const  data = require('../model/post');
 
-router.post('/idpost',api)
+router.post('/getpostdatabyid',api)
 
 async function api(req,res){
     const {_id} =req.body;
