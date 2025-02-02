@@ -6,6 +6,7 @@ import Landing from './Pages/Landing/Landing'
 import Test from '../Test'
 import Login from './Pages/Authentication/Login'
 import Router from './Components/Router'
+import MyProjectSection from './Pages/Home/Components/MyProjectSection'
 
 function App() {
 
