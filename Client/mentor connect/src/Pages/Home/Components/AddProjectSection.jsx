@@ -5,7 +5,7 @@ import React from 'react'
 const AddProjectSection = () => {
   return (
     <div>
-      
+      Add Project Section
     </div>
   )
 }
