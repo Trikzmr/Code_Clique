@@ -7,7 +7,7 @@ router.post('/getpostdatabyid',api)
 async function api(req,res){
     const {_id} =req.body;
     try {
-        let user = await data.find({_id});
+        let user = await data.findOne({_id});
         console.log(user);
         res.json(user);
     } catch (error) {
