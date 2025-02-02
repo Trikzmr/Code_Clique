@@ -9,6 +9,8 @@ const getpostdata = require('./routes/getPostdata')
 const cookieParser = require("cookie-parser");
 const getpostdatabyid = require('./routes/getpostdatabyid')
 const getmyproject = require('./routes/GetMyProject')
+const addmyrequest = require('./routes/addRequest')
+
 
 const port = 3000
 const app = express();
@@ -35,6 +37,9 @@ app.use('/api', AddProject)
 app.use('/api',getpostdata)
 app.use('/api',getpostdatabyid)
 app.use('/api',getmyproject)
+app.use('/api',addmyrequest)
+
+
 
 
 // Start the server
