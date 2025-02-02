@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import MyComponent from './MyComponent';
 
 const MyProjectSection = () => {
   let key =0;
@@ -30,47 +31,11 @@ const MyProjectSection = () => {
 
   return (
     <div>
-      <h2>My Projects</h2>
-      <div>
-  {myProjects.map((project, index) => (
-    <div key={index} className="project-card">
-      <div className="username">
-      {project.username}
+     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-8 md:gap-x-10 mx-auto mt-8 ">
+        {myProjects.map((project) => (
+          <MyComponent key={project._id} project={project} />
+        ))}
       </div>
-      <div className="Title">
-          {project.Title}
-      </div>
-      <div className="Description">
-      {project.Description}
-      </div>
-      <div className="Category">
-      {project.Category}
-      </div>
-      <div className="Keyskills">
-      {project.Keyskills}
-      </div>
-      <div className="TeamRequest">
-      {project.TeamRequest}
-      </div>
-      <div className="MentorRequest">
-      {project.MentorRequest}
-      </div>
-      <div className="Team">
-      {project.Team}
-      </div>
-      <div className="Mentor">
-      {project.Mentor}
-      </div><div className="Githubkink">
-      {project.Githubkink}
-      </div><div className="Notice">
-      {project.Notice}
-      </div>
-      
-
-    </div>
-  ))}
-</div>
-
     </div>
   );
 };
