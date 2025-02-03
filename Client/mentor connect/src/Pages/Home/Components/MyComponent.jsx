@@ -12,7 +12,7 @@ const MyComponent = (props) => {
   return (
     <div className="bg-white shadow-md rounded-xl p-6 py-5 h-80 w-113 mx-auto">
       <h1 className="text-2xl font-semibold  text-gray-700">{Title}</h1>
-      <p className="text-lg text-[#ff6584]">by {username}</p>
+      <p className="text-lg text-[#6c63ff]">by {username}</p>
 
       <p className="text-lg text-gray-500 py-2">{
         Keyskills.map((skill, index) => (
