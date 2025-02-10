@@ -10,7 +10,8 @@ const cookieParser = require("cookie-parser");
 const getpostdatabyid = require('./routes/getpostdatabyid')
 const getmyproject = require('./routes/GetMyProject')
 const addmyrequest = require('./routes/addRequest')
-
+const getrequestbyprojectid = require('./routes/getRequestByProjectId')
+const newTeam = require('./routes/newteam')
 
 const port = 3000
 const app = express();
@@ -38,6 +39,8 @@ app.use('/api',getpostdata)
 app.use('/api',getpostdatabyid)
 app.use('/api',getmyproject)
 app.use('/api',addmyrequest)
+app.use('/api',getrequestbyprojectid)
+app.use('/api',newTeam)
 
 
 
