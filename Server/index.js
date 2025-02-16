@@ -9,9 +9,10 @@ const getpostdata = require('./routes/getPostdata')
 const cookieParser = require("cookie-parser");
 const getpostdatabyid = require('./routes/getpostdatabyid')
 const getmyproject = require('./routes/GetMyProject')
-const addmyrequest = require('./routes/addRequest')
-const getrequestbyprojectid = require('./routes/getRequestByProjectId')
 const newTeam = require('./routes/newteam')
+const SendRequest = require('./routes/SendRequest')
+const getrequestbyprojectid = require('./routes/getRequestByProjectId')
+
 
 const port = 3000
 const app = express();
@@ -30,15 +31,15 @@ require("./db/conn");
 
 
 //user routes
-app.use('', Base);
-app.use('/api', RegisterUser)
-app.use('/api',AllUser)
-app.use('/api', Login)
-app.use('/api', AddProject)
-app.use('/api',getpostdata)
-app.use('/api',getpostdatabyid)
-app.use('/api',getmyproject)
-app.use('/api',SendRequest)
+app.use('', Base); // base page
+app.use('/api', RegisterUser) // to register new user
+app.use('/api',AllUser) //to show details of all user
+app.use('/api', Login) //to login the user
+app.use('/api', AddProject) // to create a new project post
+app.use('/api',getpostdata) // to get all post data
+app.use('/api',getpostdatabyid) // to get post data by id
+app.use('/api',getmyproject) // get projects you are working in
+app.use('/api',SendRequest) //
 app.use('/api',getrequestbyprojectid)
 app.use('/api',newTeam)
 

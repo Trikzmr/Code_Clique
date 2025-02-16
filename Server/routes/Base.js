@@ -89,7 +89,12 @@ async function baseapi(req, res) {
                 <tr>
                     <td>getpostdatabyid</td>
                     <td>/getpostdatabyid</td>
-                    <td> post _id get all project detail </td>
+                    <td>get post by post id</td>
+                </tr>
+                <tr>
+                    <td>getmyproject</td>
+                    <td>/getmyproject</td>
+                    <td>get projets you are woring in</td>
                 </tr>
             </table>
         </body>
