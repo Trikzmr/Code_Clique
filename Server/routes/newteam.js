@@ -2,7 +2,7 @@ const express = require('express');
 const project = require('../model/post'); 
 const router = express.Router();
 
-router.post('/addnewarray', async (req, res) => {
+router.post('/addtoteam', async (req, res) => {
     const { _id, Team } = req.body; 
   
     try {

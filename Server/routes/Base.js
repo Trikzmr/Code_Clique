@@ -96,6 +96,21 @@ async function baseapi(req, res) {
                     <td>/getmyproject</td>
                     <td>get projets you are woring in</td>
                 </tr>
+                <tr>
+                    <td>SendRequest</td>
+                    <td>/sendRequest</td>
+                    <td>send request to join project</td>
+                </tr>
+                <tr>
+                    <td>getrequestbyprojectid</td>
+                    <td>/byprojectid</td>
+                    <td>get request of specific project id</td>
+                </tr>
+                <tr>
+                    <td>newTeam</td>
+                    <td>/addtoteam</td>
+                    <td>Add a member to project Team</td>
+                </tr>
             </table>
         </body>
         </html>
