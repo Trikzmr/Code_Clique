@@ -9,7 +9,8 @@ const getpostdata = require('./routes/getPostdata')
 const cookieParser = require("cookie-parser");
 const getpostdatabyid = require('./routes/getpostdatabyid')
 const getmyproject = require('./routes/GetMyProject')
-const addmyrequest = require('./routes/addRequest')
+const SendRequest = require('./routes/SendRequest')
+
 
 
 const port = 3000
@@ -37,7 +38,7 @@ app.use('/api', AddProject)
 app.use('/api',getpostdata)
 app.use('/api',getpostdatabyid)
 app.use('/api',getmyproject)
-app.use('/api',addmyrequest)
+app.use('/api',SendRequest)
 
 
 

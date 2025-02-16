@@ -57,11 +57,11 @@ const MyProjectSection = () => {
         ))}
       </div>
       <div className="pagination flex justify-center items-center mt-8">
-        <button className="button-secondary rounded-full p-2 px-6 mr-2 mb-2" onClick={prev} disabled={index === 1}>
+        <button className="button-primary rounded-full p-2 px-6 mr-2 mb-2" onClick={prev} disabled={index === 1}>
           Prev
         </button>
-        <button className="button-secondary rounded-full p-2 px-6 mr-2 mb-2">{index}</button>
-        <button className="button-secondary rounded-full p-2 px-6 mr-2 mb-2" onClick={next} disabled={index * 3 >= myProjects.length}>
+        <button className="button-primary rounded-full p-2 px-6 mr-2 mb-2">{index}</button>
+        <button className="button-primary rounded-full p-2 px-6 mr-2 mb-2" onClick={next} disabled={index * 3 >= myProjects.length}>
           Next
         </button>
       </div>

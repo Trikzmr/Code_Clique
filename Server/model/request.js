@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const Postrequest = new mongoose.Schema({
-  username: {
+  Username: {
     type: String,
     
   },
@@ -24,6 +24,9 @@ const Postrequest = new mongoose.Schema({
   projectLink: {
     type: String,
     
+  },
+  role:{
+    type:String,
   },
 
   createdAt: {
