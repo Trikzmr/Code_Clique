@@ -38,7 +38,7 @@ app.use('/api', AddProject)
 app.use('/api',getpostdata)
 app.use('/api',getpostdatabyid)
 app.use('/api',getmyproject)
-app.use('/api',addmyrequest)
+app.use('/api',SendRequest)
 app.use('/api',getrequestbyprojectid)
 app.use('/api',newTeam)
 
