@@ -33,15 +33,15 @@ require("./db/conn");
 //user routes
 app.use('', Base); // base page
 app.use('/api', RegisterUser) // to register new user
-app.use('/api',AllUser) //to show details of all user
+app.use('/api', AllUser) //to show details of all user
 app.use('/api', Login) //to login the user
 app.use('/api', AddProject) // to create a new project post
-app.use('/api',getpostdata) // to get all post data
-app.use('/api',getpostdatabyid) // to get post data by id
-app.use('/api',getmyproject) // get projects you are working in
-app.use('/api',SendRequest) // send join request to project
-app.use('/api',getrequestbyprojectid) // get request list of specific project id
-app.use('/api',newTeam) //add member to team
+app.use('/api', getpostdata) // to get all post data
+app.use('/api', getpostdatabyid) // to get post data by id
+app.use('/api', getmyproject) // get projects you are working in
+app.use('/api', SendRequest) // send join request to project
+app.use('/api', getrequestbyprojectid) // get request list of specific project id
+app.use('/api', newTeam) //add member to team
 
 
 

@@ -1,42 +1,55 @@
-import React from 'react'
-import { Routes, Route, Link, BrowserRouter } from 'react-router-dom'
-import Dashboard from './Components/Dashboard'
-import Messages from './Components/Messages'
-import MyTask from './Components/MyTask'
-import Team from './Components/Team'
-import Calander from './Components/Calander'
+import React from 'react';
+import { Routes, Route, Link, useParams } from 'react-router-dom';
+import Dashboard from './Components/Dashboard';
+import Messages from './Components/Messages';
+import MyTask from './Components/MyTask';
+import Team from './Components/Team';
+import Calander from './Components/Calander';
 
 const ProjectDashboard = () => {
-  return (
-    <div className='projectDashboard'>
-        <div className='projectDashboardLeft'>
-            <div className='projectDashboardLeftItem'>
-                <Link to="/project/">Dashboard</Link>
+    const { id } = useParams();
+    
+    return (
+        <div className="projectDashboard flex md:flex-row flex-col min-h-screen overflow-hidden">
+            {/* Sidebar - Fixed Width, Prevent Shrinking */}
+            <div className="projectDashboardLeft md:w-[300px] flex-shrink-0 p-4">
+                <div className="projectDashboardLeftHead mt-6 text-3xl">
+                    Start Your Day <br></br>& Be Productive
+                </div>
+                <div className="ProjectDashboardLeftMenu mt-10">
+                    <div className="projectDashboardLeftItem text-gray-700 tracking-widest font-semibold mb-0">
+                        MENU
+                    </div>
+                    <div className="projectDashboardLeftItem ml-2 text-gray-500 p-4 button-accent rounded-full">
+                        <Link to={`/project/${id}`}>Dashboard</Link>
+                    </div>
+                    <div className="projectDashboardLeftItem ml-2 text-gray-500 p-4">
+                        <Link to={`/project/${id}/messages`}>Messages</Link>
+                    </div>
+                    <div className="projectDashboardLeftItem ml-2 text-gray-500 p-4">
+                        <Link to={`/project/${id}/mytask`}>My Task</Link>
+                    </div>
+                    <div className="projectDashboardLeftItem ml-2 text-gray-500 p-4">
+                        <Link to={`/project/${id}/team`}>Team</Link>
+                    </div>
+                    <div className="projectDashboardLeftItem ml-2 text-gray-500 p-4">
+                        <Link to={`/project/${id}/calander`}>Calander</Link>
+                    </div>
+                </div>                
             </div>
-            <div className='projectDashboardLeftItem'>
-                <Link to="/project/messages">Messages</Link>
-            </div>
-            <div className='projectDashboardLeftItem'>
-                <Link to="/project/mytask">My Task</Link>
-            </div>
-            <div className='projectDashboardLeftItem'>
-                <Link to="/project/team">Team</Link>
-            </div>
-            <div className='projectDashboardLeftItem'>
-                <Link to="/project/calander">Calander</Link>
-            </div>
-        </div>
-        <div className='projectDashboardRight'>
-            <Routes>
-            <Route path="" element={<Dashboard/>} />
-            <Route path="/messages" element={ <Messages/>} />
-            <Route path="/mytask" element={<MyTask/>} />
-            <Route path="/team" element={<Team/>} />
-            <Route path="/calander" element={<Calander/>} />
-            </Routes>
-        </div>
-    </div>
-  )
-}
 
-export default ProjectDashboard
+            {/* Right Content - Prevents Sidebar Shrinking */}
+            <div className="projectDashboardRight flex-grow overflow-auto p-4">
+                <Routes>
+                    <Route path="" element={<Dashboard />} />
+                    <Route path="/messages" element={<Messages id={id} />} />
+                    <Route path="/mytask" element={<MyTask id={id} />} />
+                    <Route path="/team" element={<Team id={id} />} />
+                    <Route path="/calander" element={<Calander id={id} />} />
+                </Routes>
+            </div>
+        </div>
+    );
+};
+
+export default ProjectDashboard;

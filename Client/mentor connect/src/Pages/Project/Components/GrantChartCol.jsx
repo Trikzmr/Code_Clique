@@ -29,7 +29,7 @@ const GrantChartCol = (props) => {
     })
 
   return (
-    <div key={index} className=" daycol" >
+    <div key={index} className=" daycol min-w-[130px]" >
         <div className="day bg-amber-400">
             <div className="dayname">{day.day}</div>
             <div className="date">{day.date}</div>

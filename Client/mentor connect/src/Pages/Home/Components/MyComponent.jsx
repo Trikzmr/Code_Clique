@@ -6,7 +6,7 @@ const MyComponent = (props) => {
   const navigate = useNavigate();
 
   const gotodetails = () => {
-    navigate(`/project/details/${_id}`);
+    navigate(`/project/${_id}`);
   }
 
   return (

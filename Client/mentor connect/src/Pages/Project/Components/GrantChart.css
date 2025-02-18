@@ -1,12 +1,1 @@
-.chart {
-    display: flex;
-    overflow-x: scroll;
-    position: relative;
-    width: 100%; /* Ensures that chart expands fully horizontally */
-    white-space: nowrap; /* Prevent line wrapping */
-}
 
-.daycol {
-    width: 200px; 
-    flex-shrink: 0; /* Prevent the item from shrinking */
-}

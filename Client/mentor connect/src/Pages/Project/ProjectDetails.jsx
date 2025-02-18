@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ProjectDetailsSection from './ProjectDetailsSection';
+import RequestForm from './Components/Requestform';
 
 const ProjectDetails = () => {
   
@@ -18,7 +19,7 @@ const ProjectDetails = () => {
         {/* Right Section */}
         <div className="md:w-1/3 flex justify-center items-center p-5 rounded-lg">
           <div className="JoinProjectSection">
-            <p>Join Project Section</p>
+            <RequestForm/>
           </div>
         </div>
       </div>

@@ -13,6 +13,5 @@ async function api(req,res){
     } catch (error) {
         res.json(error);
     }
-
 }
 module.exports = router;
