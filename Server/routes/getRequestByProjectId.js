@@ -12,6 +12,7 @@ Router.post('/byprojectid',api);
         res.json(user);
         
     } catch (error) {
+        
         res.jon(error);
         
     }

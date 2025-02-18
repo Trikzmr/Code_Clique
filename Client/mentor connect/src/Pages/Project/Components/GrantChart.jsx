@@ -82,7 +82,7 @@ const GrantChart = () => {
 
     return (
         <div className="grant-chart">
-            <div className="chart">
+            <div className="chart flex overflow-x-scroll">
                 {days.map((day, index) => renderdate(day, index))}
             </div>
         </div>
