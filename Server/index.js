@@ -12,6 +12,7 @@ const getmyproject = require('./routes/GetMyProject')
 const newTeam = require('./routes/newteam')
 const SendRequest = require('./routes/SendRequest')
 const getrequestbyprojectid = require('./routes/getRequestByProjectId')
+const DeleteRequest = require('./routes/DeleteRequest')
 
 
 const port = 3000
@@ -42,6 +43,7 @@ app.use('/api', getmyproject) // get projects you are working in
 app.use('/api', SendRequest) // send join request to project
 app.use('/api', getrequestbyprojectid) // get request list of specific project id
 app.use('/api', newTeam) //add member to team
+app.use('/api', DeleteRequest) // delete request from request schema
 
 
 
