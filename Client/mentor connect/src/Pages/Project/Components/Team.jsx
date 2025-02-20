@@ -70,11 +70,14 @@ const Team = (props) => {
 
   useEffect(handleonload, []);
   return (
-    <div className="TeamSection ">
+    <div className="TeamSection flex gap-8">
       <div className="teamMemberlist gap-8 w-[50%] p-6 bg-[#ffffff] rounded-2xl mb-4">
         {teamList.map(appendteamList)}
       </div>
-      <div className="TeamReqList w-[50%] p-6 bg-[#ffffff] rounded-2xl mt-4">
+      <div className="TeamReqList w-[50%] p-6 bg-[#ffffff] rounded-2xl">
+          <div className="text-3xl font-semibold mb-6 text-gray-800">
+            Join Request
+          </div>
         {teamReqList.map(appendteamreqlist)}
       </div>
     </div>    
