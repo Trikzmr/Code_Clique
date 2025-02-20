@@ -1,10 +1,39 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const TeamReqListCard = (props) => {
-    const data = props.data;
+
+
+  const data = props.data;
+
+  const getuserdata = () => {
+    const Username = data.Username;
+
+    try {
+      
+    } catch (error) {
+      
+    }
+  }
+
+  const onload = () => {
+    getuserdata();
+  }
+
+  useEffect(onload, []);
+
+  console.log(data);
   return (
-    <div className='TeamReqListCard max-w-[32vw] h-[12vw] bg-amber-100 m-8'>
-      {data.Username}
+    <div className='TeamReqListCard w-[100%] p-4 bg-[#f1f2f7] rounded-xl'>
+      <div className="TeamReqListCardTop">
+        {data.Username}
+      </div>
+      <hr/>
+      <div className="TeamReqListCardBody">
+
+      </div>
+      <div className="TeamReqListCardFooter">
+
+      </div>
     </div>
   )
 }
