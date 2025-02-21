@@ -45,7 +45,7 @@ app.use('/api', SendRequest) // send join request to project
 app.use('/api', getrequestbyprojectid) // get request list of specific project id
 app.use('/api', newTeam) //add member to team
 app.use('/api', DeleteRequest) // delete request from request schema
-app.use('/api', GetUser) // delete request from request schema
+app.use('/api', GetUser) // get data of a perticular user
 
 
 
