@@ -11,13 +11,13 @@ const Team = (props) => {
 
   const appendteamList = (name) => {
     return(
-      <TeamListCard data={name}/>
+      <TeamListCard data={name} projectId={projectId}/>
     )
   }
 
   const appendteamreqlist = (name) => {
     return(
-      <TeamReqListCard data={name}/>
+      <TeamReqListCard data={name} projectId={projectId}/>
     )
   }
 

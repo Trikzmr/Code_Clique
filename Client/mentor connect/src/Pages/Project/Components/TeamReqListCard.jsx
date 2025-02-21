@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 const TeamReqListCard = (props) => {
   const [User, setUser] = useState({});
   const data = props.data;
+  const projectId = props.projectId;
+  const Username = data.Username;
 
   const appendlist = (name) => {
     return <li>{name}</li>;
@@ -10,8 +12,8 @@ const TeamReqListCard = (props) => {
 
   //console.log(data);
   const getuserdata = async () => {
-    const Username = data.Username;
-    let api = "http://localhost:3000/api//GetUser";
+    
+    let api = "http://localhost:3000/api/GetUser";
     let container = {
       method: "POST",
       headers: {
@@ -33,9 +35,61 @@ const TeamReqListCard = (props) => {
     getuserdata();
   };
 
+  const updatedevloperList = async() =>{
+    let post = {
+      _id: projectId,
+      Team: Username
+    }
+    let api = "http://localhost:3000/api/addtoteam";
+    let container = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(post),
+    };
+
+    try {
+      let response = await fetch(api, container);
+      let sucessmessage = await response.json();
+      console.log(sucessmessage);
+      
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const deletereqfromdb = async() => {
+    let post = {
+      _id: data._id,
+    }
+    let api = "http://localhost:3000/api/deleteRequest";
+    let container = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(post),
+    };
+
+    try {
+      let response = await fetch(api, container);
+      let sucessmessage = await response.json();
+      console.log(sucessmessage);
+      
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const handleAccept = () => {
+    updatedevloperList();
+    deletereqfromdb();
+  }
+
   useEffect(onload, []);
 
-  console.log(data);
+  //console.log(data);
   return (
     <div className="TeamReqListCard w-full mb-6 p-6 bg-white shadow-lg rounded-xl border border-gray-200">
       {/* Top Section - User Details */}
@@ -109,7 +163,7 @@ const TeamReqListCard = (props) => {
 
       {/* Accept & Reject Buttons */}
       <div className="flex justify-center gap-4">
-        <button className="px-6 py-2 rounded-full button-accent">
+        <button className="px-6 py-2 rounded-full button-accent" onClick={handleAccept}>
           Accept
         </button>
         <button className="px-6 py-2 rounded-full bg-red-500 text-white font-medium hover:bg-red-600 transition">
