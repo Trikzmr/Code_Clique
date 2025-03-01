@@ -1,22 +1,45 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {useParams} from 'react-router-dom';
 
 const CreateTaskForm = () => {
     let projectid = useParams().id;
-    console.log(projectid);
+    
   
     let request = {
       ProjectId: "",
-      skills: "",
-      message: "",
-      publicProfileLink: "",
-      projectLink: "",
-      role: "",
+      Title: "",
+      Description: "",
+      ProjectOwner: "",
+      StartDate: "",
+      EndDate: "",
+      Status: "Initiated"
+    }
+
+    const getprojectdetails = async() => {
+        const container = {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify({ _id: projectid }),
+        }
+        try{
+            const res = await fetch('http://localhost:3000/api/getpostdatabyid', container);
+            const data = await res.json();
+            request.ProjectOwner = data.username;
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
+
+    const onload = () => {
+        getprojectdetails();
     }
   
     const senddata = async() =>{
       try{
-        const res = fetch('http://localhost:3000/api/sendRequest', 
+        const res = await fetch('http://localhost:3000/api/AddTask', 
           {
             method: "POST",
             headers: {
@@ -34,27 +57,20 @@ const CreateTaskForm = () => {
       }
     }
     const getforminputs = () => {
-      request.message = document.getElementById("message").value;
-      request.profile = document.getElementById("profile").value;
-      request.publicProfileLink = document.getElementById("profile").value;
-      request.projectLink = document.getElementById("project").value;
-      request.ProjectId = projectid;
-      const skillArray = document.getElementById("skills").value.split(",");
-      request.skills = skillArray;
+        request.ProjectId = projectid;
+        request.Title = document.getElementById("Title").value;
+        request.Description = document.getElementById("message").value;
+        request.StartDate = document.getElementById("startdate").value;
+        request.EndDate = document.getElementById("enddate").value;  
     }
   
-    const Devjoin =(e) => {
+    const CreateTask =(e) => {
       e.preventDefault();
       getforminputs();
-      request.role = "Developer";
       senddata();
     }
-    const Mentorjoin =(e) => {
-      e.preventDefault();
-      getforminputs();
-      request.role = "Mentor";
-      senddata();
-    }
+
+    useEffect(onload, []);
     return (
       <div className="max-w-lg mx-auto p-6 bg-white shadow-lg rounded-lg">
         <h1 className="text-3xl font-bold text-gray-800  mb-6">
@@ -62,10 +78,10 @@ const CreateTaskForm = () => {
         </h1>
   
         <form className="space-y-4">
-          {/* Skills Input */}
+          {/* Title Input */}
             <input
                 type="text"
-                id="skills"
+                id="Title"
                 placeholder="Task Title"
                 className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
@@ -90,14 +106,14 @@ const CreateTaskForm = () => {
             <h4 className='text-lg font-semibold text-gray-800'>End Date</h4>
             <input 
                 type="date" 
-                id="endstart" 
+                id="enddate" 
                 className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
 
   
           {/* Buttons */}
           <div className="flex justify-center space-x-4">
-            <button className="py-2 px-6 rounded-full button-accent" onClick={Devjoin}>
+            <button className="py-2 px-6 rounded-full button-accent" onClick={CreateTask}>
               Create
             </button>
           </div>

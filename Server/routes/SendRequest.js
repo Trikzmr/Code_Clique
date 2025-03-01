@@ -6,7 +6,6 @@ const Authentication = require('../Middleware/Authentication'); // Import the au
 
 const api = async(req, res)=>{ // Create an asynchronous function called api
     const{Username} = req.user; // Get the username from the request
-    console.log(Username);
     const {projectId, skills, message, publicProfileLink, projectLink, role} = req.body; // Get the projectId, skills, message, publicProfileLink and projectLink from the request
 
     try {
