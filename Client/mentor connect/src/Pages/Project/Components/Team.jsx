@@ -35,7 +35,7 @@ const Team = (props) => {
 
       const data = await response.json();
       setTeamList(data.Team);
-      
+      //console.log(data.Team);     
     } catch (error) {
       console.log(error);
     }
@@ -72,6 +72,9 @@ const Team = (props) => {
   return (
     <div className="TeamSection flex gap-8">
       <div className="teamMemberlist gap-8 w-[50%] p-6 bg-[#ffffff] rounded-2xl mb-4">
+        <div className="text-3xl font-semibold mb-6 text-gray-800">
+          Team Members
+        </div>
         {teamList.map(appendteamList)}
       </div>
       <div className="TeamReqList w-[50%] p-6 bg-[#ffffff] rounded-2xl">

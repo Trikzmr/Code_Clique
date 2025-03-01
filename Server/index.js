@@ -14,6 +14,8 @@ const SendRequest = require('./routes/SendRequest')
 const getrequestbyprojectid = require('./routes/getRequestByProjectId')
 const DeleteRequest = require('./routes/DeleteRequest')
 const GetUser = require('./routes/GetUser')
+const addTask = require('./routes/AddTask')
+const FindTaskByProjectId = require('./routes/FindTaskByProjectId')
 
 
 const port = 3000
@@ -46,6 +48,9 @@ app.use('/api', getrequestbyprojectid) // get request list of specific project i
 app.use('/api', newTeam) //add member to team
 app.use('/api', DeleteRequest) // delete request from request schema
 app.use('/api', GetUser) // get data of a perticular user
+app.use('/api', addTask) //add task to a project
+app.use('/api', FindTaskByProjectId) //find task by project id
+
 
 
 
