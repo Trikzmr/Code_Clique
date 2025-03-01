@@ -1,12 +1,19 @@
 const express = require('express')
 const Task = require('../model/TaskModel');
 const api = express.Router();
+const authenticate = require('../Middleware/Authentication');
 
 const apicall = async (req, res) =>{
-    const data = req.body;
+    const { ProjectId, Title, Description, ProjectOwner, StartDate, EndDate, Status } = req.body;
+    const{Username} = req.user;
     try{
 
-        const task = new Task(data);
+        
+        const task = new Task({
+            ProjectId, Title, Description, ProjectOwner, StartDate, EndDate, Status , Username
+        });
+
+
         await task.save();
         res.status(201).json({message: "Task added sucess"});
 
@@ -17,6 +24,6 @@ const apicall = async (req, res) =>{
     }
 }
 
-api.post('/AddTask',apicall);
+api.post('/AddTask', authenticate , apicall);
 
 module.exports = api;
