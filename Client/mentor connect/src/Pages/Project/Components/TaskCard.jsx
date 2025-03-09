@@ -51,21 +51,27 @@ const TaskCard = (props) => {
       return (
         <div className="TeamReqListCard w-full mb-6 p-6 bg-white shadow-lg rounded-xl border border-gray-200">
           {/* Top Section - User Details */}
-          <div className="flex items-center gap-4">
-            <div>
+          <div className="top">
               <div className="text-2xl font-semibold text-gray-800">
                 {data.Title}
               </div>
               <div className="text-gray-500 text-sm">@{Username}</div>
-            </div>
+            
           </div>
     
-          <hr className="my-4" />
-    
+          <hr className="mt-4" />
+          <div className="status mt-3 ml-[80%] bg-blue-500 text-white w-[16%] px-4 py-1 text-center rounded-2xl">
+            {data.Status}
+          </div>    
           {/* Portfolio & Project Links + Skills */}
-          <div className=" gap-6 mt-6">
-            <div className="status">{data.Status}</div>
+          <div className="descriptiontitle text-lg text-grey-800 font-semibold mt-2">Description: </div>
+          <div className=" gap-6 mt-0 text-gray-600">
+            
             {data.Description}
+          </div>
+          <div className="time flex gap-6 mt-5 text-gray-600">
+            <div>Start Date: {data.StartDate}</div>
+            <div>End Date: {data.EndDate}</div>
           </div>
     
           <hr className="my-6" />
