@@ -91,7 +91,7 @@ const TeamReqListCard = (props) => {
 
   //console.log(data);
   return (
-    <div className="TeamReqListCard w-full mb-6 p-6 bg-white shadow-lg rounded-xl border border-gray-200">
+    <div className="TeamReqListCard w-full mb-6 p-6 bg-white shadow-lg rounded-xl border border-gray-200 ">
       {/* Top Section - User Details */}
       <div className="flex items-center gap-4">
         {/* Avatar (Optional) */}

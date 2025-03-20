@@ -12,7 +12,7 @@ const ProjectDashboard = () => {
     return (
         <div className="projectDashboard flex md:flex-row flex-col min-h-screen overflow-hidden bg-[#ffffff] gap-4 pr-8 ">
             {/* Sidebar - Fixed Width, Prevent Shrinking */}
-            <div className="projectDashboardLeft md:w-[300px] flex-shrink-0 p-4">
+            <div className="projectDashboardLeft md:w-[260px] flex-shrink-0 p-4">
                 <div className="projectDashboardLeftHead mt-6 text-3xl">
                     Start Your Day <br></br>& Be Productive
                 </div>
@@ -39,7 +39,7 @@ const ProjectDashboard = () => {
             </div>
 
             {/* Right Content - Prevents Sidebar Shrinking */}
-            <div className="projectDashboardRight flex-grow overflow-auto p-4 bg-[#f1f2f7] rounded-4xl mt-18">
+            <div className="projectDashboardRight flex-grow overflow-auto p-4 border border-gray-200 bg-gray-50 rounded-4xl mt-18">
                 <Routes>
                     <Route path="" element={<Dashboard />} />
                     <Route path="/messages" element={<Messages id={id} />} />

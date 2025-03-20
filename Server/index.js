@@ -16,6 +16,7 @@ const DeleteRequest = require('./routes/DeleteRequest')
 const GetUser = require('./routes/GetUser')
 const addTask = require('./routes/AddTask')
 const FindTaskByProjectId = require('./routes/FindTaskByProjectId')
+const counter = require('./model/counter')
 
 
 const port = 3000
@@ -32,6 +33,26 @@ app.use(cookieParser());
 
 // Connect to MongoDB 
 require("./db/conn");
+
+const count = async() => {
+  try {
+    const cnt = await counter.findOne();
+    console.log(cnt);
+    if(cnt === null || cnt.length === 0){
+      const count = new counter();
+      await count.save();
+    }
+    else{
+      let n = cnt.Count;
+      n++;
+      await counter.updateOne({Count: n});
+    } 
+    return;
+  } catch (error) {
+    console.error(error.message);
+    return;
+  }
+}
 
 
 //user routes

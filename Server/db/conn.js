@@ -4,9 +4,9 @@ const DB = "mongodb+srv://debabratodas729:qzqRYddVN5eFh72K@database1.u7jnn.mongo
 
 
 
-mongoose.connect(DB,{
-})
-.then(
-()=>console.log("connection start"))
-.catch((error)=> console.log(error.message));
-
+mongoose.connect(DB, {})
+    .then(() => console.log("Connection successful"))
+    .catch((error) => {
+        console.error("MongoDB connection error:", error);
+        console.error("Cause:", error.cause);
+    });
