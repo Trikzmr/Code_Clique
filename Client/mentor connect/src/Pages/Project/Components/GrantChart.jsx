@@ -1,90 +1,77 @@
-import React, { useState, useEffect } from 'react';
-import './GrantChart.css';
-import GrantChartCol from './GrantChartCol';
+import React from "react";
+import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend } from "chart.js";
+import ChartDataLabels from "chartjs-plugin-datalabels";
+import { Bar } from "react-chartjs-2";
+
+// Register Chart.js components & DataLabels plugin
+ChartJS.register(BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend, ChartDataLabels);
 
 const GrantChart = () => {
-    const [days, setdays] = useState([]);
-
-    const Task = [
-        {
-            Title: "Task 1",
-            StartDate: "2025-01-01",
-            EndDate: "2025-01-05",
-        },
-        {
-            Title: "Task 4",
-            StartDate: "2025-01-03",
-            EndDate: "2025-01-12",
-        },
-        {
-            Title: "Task 2",
-            StartDate: "2025-01-06",
-            EndDate: "2025-01-10",
-        },
-        {
-            Title: "Task 3",
-            StartDate: "2025-01-11",
-            EndDate: "2025-01-15",
-        },
-    ];
-
-    // Function to check if the given date falls within the Task StartDate and EndDate
-    const checkifTask = (date) => {
-        const gotTask = [];
-        const targetDate = new Date(date) // Convert 'date' to a Date object
-        targetDate.setDate(targetDate.getDate() + 1);
-
-        for (let i = 0; i < Task.length; i++) {
-            const taskStartDate = new Date(Task[i].StartDate); // Convert StartDate to Date object
-            const taskEndDate = new Date(Task[i].EndDate); // Convert EndDate to Date object
-            taskEndDate.setDate(taskEndDate.getDate() + 1);
-            // Convert the comparison dates into the same format and compare
-            if (targetDate >= taskStartDate && targetDate <= taskEndDate) {
-                gotTask.push({
-                    Title: Task[i],
-                    index:i
-                });
-            }
-        }
-        return gotTask;
+    const data = {
+        labels: ["Task 1", "Task 2", "Task 3", "Task 4", "Task 5"],
+        datasets: [{
+            label: "Project Tasks",
+            data: [
+                { x: [1, 4], y: "Task 1" },
+                { x: [3, 6], y: "Task 2" },
+                { x: [5, 8], y: "Task 3" },
+                { x: [7, 10], y: "Task 4" },
+                { x: [4, 14], y: "Task 5" }
+            ],
+            backgroundColor: "#4CAF50",
+            borderColor: "rgba(54, 162, 235, 1)",
+            borderWidth: 1,
+            borderRadius: 10,
+            borderSkipped: false,
+            barThickness: 300,
+        }]
     };
 
-    // Generate all the days of the year, and check for tasks that span each day
-    useEffect(() => {
-        const startDate = new Date(2025, 0, 1); // Jan 1st, 2025
-        const endDate = new Date(2026, 0, 1); // Jan 1st, 2026
-        const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        const monthNames = [
-            'January', 'February', 'March', 'April', 'May', 'June', 
-            'July', 'August', 'September', 'October', 'November', 'December'
-        ];
-        
-        const dates = [];
-
-        for (let d = new Date(startDate); d < endDate; d.setDate(d.getDate() + 1)) {
-            let TaskList = checkifTask(d);
-            dates.push({
-                day: dayNames[d.getDay()],
-                month: monthNames[d.getMonth()],
-                date: d.getDate(),
-                year: d.getFullYear(),
-                Task: TaskList
-            });
+    const options = {
+        indexAxis: "y",
+        scales: {
+            y: {
+                grid: { display: false },
+                ticks: { display: false },
+                afterFit: (c) => {
+                    c.width = 40;
+                }
+            },
+            x: {
+                type: "linear",
+                position: "bottom",
+                title: {
+                    display: true,
+                    text: "Time (Days)"
+                },
+                min: 0,
+                max: 12
+            }
+        },
+        responsive: true,
+        maintainAspectRatio: false, // Allows manual height setting
+        plugins: {
+            legend: { display: false },
+            datalabels: {
+                anchor: "center",
+                align: "center",
+                color: "#FFF",
+                font: {
+                    weight: "bold",
+                    size: 16
+                },
+                formatter: (value, context) => context.chart.data.labels[context.dataIndex],
+            }
         }
-        setdays(dates);
-    }, []);
-
-    const renderdate = (day, index) => {
-        return (
-            <GrantChartCol key={index} day={day} />
-        );
     };
 
     return (
-        <div className="grant-chart">
-            <div className="chart flex overflow-x-scroll">
-                {days.map((day, index) => renderdate(day, index))}
-            </div>
+        <div style={{
+            width: "100%",
+            height: "100%", /* Set height for exactly 3 tasks */
+            overflowY: "auto" /* Enable scrolling */
+        }}>
+            <Bar data={data} options={options} />
         </div>
     );
 };

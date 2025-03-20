@@ -38,7 +38,7 @@ const TaskList = () => {
     useEffect(onload, []);
   return (
     <div>
-      <h1 className='text-3xl'>Task List</h1>
+      <h1 className='text-2xl font-semibold text-gray-800 mb-3'>Task List</h1>
       <ul>
         {taskList.map(appendTaskList)}
       </ul>

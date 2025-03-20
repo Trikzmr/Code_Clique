@@ -73,10 +73,18 @@ const TaskCard = (props) => {
             <div>Start Date: {data.StartDate}</div>
             <div>End Date: {data.EndDate}</div>
           </div>
+
+          <div className="descriptiontitle text-lg text-grey-800 font-semibold mt-2">Members </div>
+
     
           <hr className="my-6" />
-    
-          {/* Accept & Reject Buttons */}
+
+          <div className="addmember">
+            <div className="addmemberbutton button-accent w-40 h-10 flex items-center justify-center rounded-full cursor-pointer gap-2">
+              <div className="addmemberbuttonleft text-3xl">+ </div>
+              <div className="addmemberbuttonright">Add Members</div>
+            </div>
+          </div>
           
         </div>
       );
