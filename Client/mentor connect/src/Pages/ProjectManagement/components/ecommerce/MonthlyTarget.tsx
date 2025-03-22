@@ -1,13 +1,51 @@
 import Chart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Dropdown } from "../ui/dropdown/Dropdown";
 import { DropdownItem } from "../ui/dropdown/DropdownItem";
 
 import React from "react";
+export default function MonthlyTarget(props) {
 
-export default function MonthlyTarget() {
-  const series = [75.55];
+
+  const [taskList, setTaskList] = useState([]);
+  const [CompletedTask, setCompletedTask] =useState([]);
+  const [rate, setRate] = useState(0);
+  let projectid = props.id;
+    
+  const getTaskList = async() => {
+      const container = {
+          method: "POST",
+          headers: {
+              "content-type": "application/json",
+          },
+          body: JSON.stringify({ ProjectId: projectid }),
+      }
+      try {
+          const res = await fetch('http://localhost:3000/api/FindTaskByProjectId', container);
+          const data = await res.json();
+          setCompletedTask(data.filter((task) => task.Status === "Completed"));
+          setTaskList(data);
+      } catch (error) {
+          console.log(error);
+      }
+  }
+    
+  const onload = () => {
+      getTaskList();
+  }
+
+  useEffect(() => {
+    if (taskList.length > 0) {
+        setRate((CompletedTask.length / taskList.length) * 100);
+    }
+}, [taskList, CompletedTask]);
+  useEffect(onload, []);
+
+
+
+
+  const series = [rate];
   const options: ApexOptions = {
     colors: ["#465FFF"],
     chart: {
@@ -70,10 +108,10 @@ export default function MonthlyTarget() {
         <div className="flex justify-between">
           <div>
             <h3 className="text-lg font-semibold text-gray-800 ">
-              Monthly Target
+              Project Status
             </h3>
             <p className="mt-1 text-gray-500 text-theme-sm">
-              Target you’ve set for each month
+              Task Completaion Status
             </p>
           </div>
           <div className="relative inline-block">
@@ -122,10 +160,10 @@ export default function MonthlyTarget() {
       <div className="flex items-center justify-center gap-5 px-6 py-3.5 sm:gap-8 sm:py-5">
         <div>
           <p className="mb-1 text-center text-gray-500 text-theme-xs sm:text-sm">
-            Target
+            TODO
           </p>
           <p className="flex items-center justify-center gap-1 text-base font-semibold text-gray-800 sm:text-lg">
-            $20K
+            {taskList.length - CompletedTask.length}
             <svg
               width="16"
               height="16"
@@ -147,10 +185,10 @@ export default function MonthlyTarget() {
 
         <div>
           <p className="mb-1 text-center text-gray-500 text-theme-xs sm:text-sm">
-            Revenue
+            Completed
           </p>
           <p className="flex items-center justify-center gap-1 text-base font-semibold text-gray-800 sm:text-lg">
-            $20K
+            {CompletedTask.length}
             <svg
               width="16"
               height="16"
@@ -172,10 +210,10 @@ export default function MonthlyTarget() {
 
         <div>
           <p className="mb-1 text-center text-gray-500 text-theme-xs sm:text-sm">
-            Today
+            Total
           </p>
           <p className="flex items-center justify-center gap-1 text-base font-semibold text-gray-800 sm:text-lg">
-            $20K
+            {taskList.length}
             <svg
               width="16"
               height="16"

@@ -41,7 +41,7 @@ const ProjectDashboard = () => {
             {/* Right Content - Prevents Sidebar Shrinking */}
             <div className="projectDashboardRight flex-grow overflow-auto p-4 border border-gray-200 bg-gray-50 rounded-4xl mt-18">
                 <Routes>
-                    <Route path="" element={<Dashboard />} />
+                    <Route path="" element={<Dashboard id={id}/>} />
                     <Route path="/messages" element={<Messages id={id} />} />
                     <Route path="/mytask" element={<MyTask id={id} />} />
                     <Route path="/team" element={<Team id={id} />} />
