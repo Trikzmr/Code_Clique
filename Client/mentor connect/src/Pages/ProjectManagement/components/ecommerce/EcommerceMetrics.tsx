@@ -1,13 +1,36 @@
-// import {
-//   ArrowDownIcon,
-//   ArrowUpIcon,
-//   BoxIconLine,
-//   GroupIcon,
-// } from "../../icons";
+import { useParams } from "react-router";
 import Badge from "../ui/badge/Badge";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-export default function EcommerceMetrics() {
+export default function EcommerceMetrics(props) {
+  const [taskList, setTaskList] = useState([]);
+  const [CompletedTask, setCompletedTask] =useState([]);
+  let projectid = props.id;
+  
+      const getTaskList = async() => {
+          const container = {
+              method: "POST",
+              headers: {
+                  "content-type": "application/json",
+              },
+              body: JSON.stringify({ ProjectId: projectid }),
+          }
+          try {
+              const res = await fetch('http://localhost:3000/api/FindTaskByProjectId', container);
+              const data = await res.json();
+              console.log(data);
+              setCompletedTask(data.filter((task) => task.Status === "Completed"));
+              setTaskList(data);
+          } catch (error) {
+              console.log(error);
+          }
+      }
+  
+      const onload = () => {
+          getTaskList();
+      }
+      useEffect(onload, []);
+    
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6">
       <div className="rounded-2xl border border-gray-200 bg-white p-5 md:p-6">
@@ -19,7 +42,7 @@ export default function EcommerceMetrics() {
               Task
             </span>
             <h4 className="mt-2 font-bold text-3xl text-gray-800 text-title-sm">
-              3,782
+              {taskList.length}
             </h4>
           </div>
         </div>
@@ -36,7 +59,7 @@ export default function EcommerceMetrics() {
               Task Completed
             </span>
             <h4 className="mt-2 font-bold text-3xl text-gray-800 text-title-sm ">
-              5,359
+              {CompletedTask.length}
             </h4>
           </div>
         </div>
