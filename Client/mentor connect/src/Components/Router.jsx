@@ -6,6 +6,8 @@ import ProjectDashboard from '../Pages/Project/ProjectDashboard';  // Import the
 import ProjectDetails from '../Pages/Project/ProjectDetails';
 import ProjectManagement from '../Pages/ProjectManagement/ProjectManagement'
 import Requestform from '../Pages/Home/Components/Requestform';
+import Profile from '../Pages/Profile/Profile';
+
 
 const Router = () => {
     return (
@@ -17,6 +19,8 @@ const Router = () => {
                 <Route path="/projectmanag/:id/*" element={<ProjectManagement/>} />
                 <Route path="/project/details/:id" element={<ProjectDetails/>} />
                 <Route path="/requestform" element={<Requestform/>} />  
+                <Route path="/profile" element={<Profile/>} />  
+                
             </Routes>
         </BrowserRouter>
     );
