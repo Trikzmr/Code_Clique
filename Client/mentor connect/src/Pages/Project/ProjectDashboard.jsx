@@ -5,6 +5,7 @@ import Messages from './Components/Messages';
 import MyTask from './Components/MyTask';
 import Team from './Components/Team';
 import Calander from './Components/Calander';
+import Taskboard from './Components/Taskboard'
 
 const ProjectDashboard = () => {
     const { id } = useParams();
@@ -33,7 +34,7 @@ const ProjectDashboard = () => {
                         <Link to={`/project/${id}/team`}>Team</Link>
                     </div>
                     <div className="projectDashboardLeftItem ml-2 text-gray-500 p-4">
-                        <Link to={`/project/${id}/calander`}>Calander</Link>
+                        <Link to={`/project/${id}/taskboard`}>Task Board</Link>
                     </div>
                 </div>                
             </div>
@@ -45,7 +46,7 @@ const ProjectDashboard = () => {
                     <Route path="/messages" element={<Messages id={id} />} />
                     <Route path="/mytask" element={<MyTask id={id} />} />
                     <Route path="/team" element={<Team id={id} />} />
-                    <Route path="/calander" element={<Calander id={id} />} />
+                    <Route path="/taskboard" element={<Taskboard id={id} />} />
                 </Routes>
             </div>
         </div>

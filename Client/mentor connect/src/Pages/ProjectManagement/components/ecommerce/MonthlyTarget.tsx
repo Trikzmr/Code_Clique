@@ -37,7 +37,7 @@ export default function MonthlyTarget(props) {
 
   useEffect(() => {
     if (taskList.length > 0) {
-        setRate((CompletedTask.length / taskList.length) * 100);
+        setRate(Math.round((CompletedTask.length / taskList.length) * 100));
     }
 }, [taskList, CompletedTask]);
   useEffect(onload, []);
