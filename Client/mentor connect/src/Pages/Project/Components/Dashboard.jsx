@@ -3,6 +3,8 @@ import GrantChart from './GrantChart'
 import EcommerceMetrics from '../../ProjectManagement/components/ecommerce/EcommerceMetrics'
 import MonthlyTarget from '../../ProjectManagement/components/ecommerce/MonthlyTarget'
 import RecentOrders from '../../ProjectManagement/components/ecommerce/RecentOrders'
+import Callformeet from './Callformeet'
+import MonthlySalesChart from '../../ProjectManagement/components/ecommerce/MonthlySalesChart'
 
 
 const Dashboard = (props) => {
@@ -12,7 +14,10 @@ const Dashboard = (props) => {
       <div className="DashboardTop flex gap-6">
         <div className="DashboardTopLeft md:w-2/3 gap-6">
           <EcommerceMetrics id={props.id}/>
-          <div className="DashboardTopLeftBottom flex gap-6 my-6">
+          <div className="DashboardTopLeftBottom md:gap-6 mt-6">
+            
+              <MonthlySalesChart/>
+           
           </div>
         </div>
         <div className="DashboardTopRight gap-6">

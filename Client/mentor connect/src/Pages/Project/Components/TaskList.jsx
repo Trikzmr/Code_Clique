@@ -31,7 +31,7 @@ const TaskList = () => {
     const appendTaskList = (task) => {
 
         return(
-            <TaskCard data = {task}/>
+            <TaskCard data = {task} id={projectid}/>
         )
     }
 

@@ -17,6 +17,7 @@ const GetUser = require('./routes/GetUser')
 const addTask = require('./routes/AddTask')
 const FindTaskByProjectId = require('./routes/FindTaskByProjectId')
 const counter = require('./model/counter')
+const AssignMembers = require('./routes/AssignMembers')
 
 
 const port = 3000
@@ -25,7 +26,7 @@ require('dotenv').config();
 
 // middleware
 app.use(cors({ 
-  origin: "http://localhost:5173",
+  origin: ["http://localhost:5173", "http://localhost:5174"],
   credentials: true, 
 }));
 app.use(express.json());
@@ -71,6 +72,7 @@ app.use('/api', DeleteRequest) // delete request from request schema
 app.use('/api', GetUser) // get data of a perticular user
 app.use('/api', addTask) //add task to a project
 app.use('/api', FindTaskByProjectId) //find task by project id
+app.use('/api', AssignMembers) //find task by project id
 
 
 

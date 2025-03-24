@@ -2,7 +2,7 @@ import React from 'react'
 
 const ListMembers = (props) => {
     let data = props.data;
-    data= [1, 2, 3, 4];
+    //data= [1, 2, 3, 4];
 
     const appendList = (member) => {
         return(
