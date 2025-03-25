@@ -6,6 +6,7 @@ import MyTask from './Components/MyTask';
 import Team from './Components/Team';
 import Calander from './Components/Calander';
 import Taskboard from './Components/Taskboard'
+import TaskDetails from './Components/TaskDetails';
 
 const ProjectDashboard = () => {
     const { id } = useParams();
@@ -47,6 +48,7 @@ const ProjectDashboard = () => {
                     <Route path="/mytask" element={<MyTask id={id} />} />
                     <Route path="/team" element={<Team id={id} />} />
                     <Route path="/taskboard" element={<Taskboard id={id} />} />
+                    <Route path="/task/:id" element={<TaskDetails id={id} />} />
                 </Routes>
             </div>
         </div>

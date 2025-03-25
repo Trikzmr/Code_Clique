@@ -18,6 +18,8 @@ const addTask = require('./routes/AddTask')
 const FindTaskByProjectId = require('./routes/FindTaskByProjectId')
 const counter = require('./model/counter')
 const AssignMembers = require('./routes/AssignMembers')
+const FindTaskByTaskId = require('./routes/FindTaskByTaskId')
+const changetaskstatus = require('./routes/ChangeTaskStatus')
 
 
 const port = 3000
@@ -73,6 +75,9 @@ app.use('/api', GetUser) // get data of a perticular user
 app.use('/api', addTask) //add task to a project
 app.use('/api', FindTaskByProjectId) //find task by project id
 app.use('/api', AssignMembers) //find task by project id
+app.use('/api', FindTaskByTaskId) //find task by task id
+app.use('/api', changetaskstatus) // change task status
+
 
 
 
