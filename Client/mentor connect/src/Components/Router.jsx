@@ -7,6 +7,7 @@ import ProjectDetails from '../Pages/Project/ProjectDetails';
 import ProjectManagement from '../Pages/ProjectManagement/ProjectManagement'
 import Requestform from '../Pages/Home/Components/Requestform';
 import Profile from '../Pages/Profile/Profile';
+import Register from '../Pages/Authentication/Register';
 
 
 const Router = () => {
@@ -14,6 +15,7 @@ const Router = () => {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Login/>} />
+                <Route path="/signup" element={<Register/>} />
                 <Route path="/home" element={<Home/>} />
                 <Route path="/project/:id/*" element={<ProjectDashboard/>} />
                 <Route path="/projectmanag/:id/*" element={<ProjectManagement/>} />

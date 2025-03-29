@@ -5,7 +5,7 @@ import AddProjectSection from './Components/AddProjectSection'
 
 const Home = () => {
   return (
-    <div className='home md:px-10 mx-auto py-12  '>
+    <div className='home md:px-10 mx-auto py-12 bg-gray-50 '>
         <div className="homeAddNewSection">
           <AddProjectSection/>
         </div>

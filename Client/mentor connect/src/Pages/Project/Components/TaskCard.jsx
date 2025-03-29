@@ -65,7 +65,7 @@ const TaskCard = (props) => {
   }, []);
 
   return (
-    <div className="TeamReqListCard w-full mb-6 p-6 bg-white shadow-lg rounded-xl border border-gray-200">
+    <div className="TeamReqListCard overflow-hidden rounded-2xl border border-gray-200 bg-white px-4 pb-3 pt-4 sm:px-6 mb-6">
       <div className="top">
         <div className="text-2xl font-semibold text-gray-800">{data.Title}</div>
         <div className="text-gray-500 text-sm">@{Username}</div>
