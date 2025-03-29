@@ -10,7 +10,7 @@ const MyComponent = (props) => {
   }
 
   return (
-    <div className="bg-white shadow-md rounded-xl p-6 py-5 h-80 w-113 mx-auto">
+    <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white px-4 pb-3 pt-4 sm:px-6 ">
       <h1 className="text-2xl font-semibold  text-gray-700">{Title}</h1>
       <p className="text-lg text-[#6c63ff]">by {username}</p>
 
