@@ -29,13 +29,6 @@ const Dashboard = (props) => {
         <RecentOrders id={props.id}/>
       </div>
 
-      {/* {<div className="GanntchartArea ">
-        <div className="GanntchartAreaTitle mb-6">Project Timeline</div>
-        <div className="ganntchart bg-[#fff] h-100 round">
-          <GrantChart />
-        </div>
-      </div>} */}
-
     </div>
   )
 }
