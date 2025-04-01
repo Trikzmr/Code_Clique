@@ -37,8 +37,8 @@ const TaskList = () => {
 
     useEffect(onload, []);
   return (
-    <div>
-      <h1 className='text-2xl font-semibold text-gray-800 mb-3'>Task List</h1>
+    <div className='overflow-scroll max-h-screen '>
+      <h1 className='text-2xl font-semibold text-gray-800 mb-3'>Tasks</h1>
       <ul>
         {taskList.map(appendTaskList)}
       </ul>

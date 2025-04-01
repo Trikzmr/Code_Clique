@@ -6,10 +6,17 @@ const authenticate = require('../Middleware/Authentication'); // Import the auth
 router.get('/getpostdata',authenticate, api)
 
 async function api(req,res){
+    let username = req.user.Username
     try {
         let data = await post.find();
-        console.log(data);
-        res.json(data);
+        let filterdata = [];
+        for(let i = 0; i<data.length; i++){
+            if(!data[i].Team.includes(username) || !data[i].username === username){
+                filterdata.push(data[i]);
+            }
+        }
+  
+        res.json(filterdata);
     } catch (error) {
         res.json(error);
     }
