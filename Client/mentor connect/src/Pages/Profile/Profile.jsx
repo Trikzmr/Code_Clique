@@ -9,18 +9,7 @@ import ProfileAchievements from './Components/ProfileAchievements'
 const Profile = () => {
   return (
     <>
-    <ProfilePrivew/>
-    <PersonalInformation/>
-    <ProfileAbout/>
-    <ProfileAchievements/>
-    {/* {<ProfileAccomplishments/>} */}
-    
-    </>
-  )
-}
 
-
-      </div>
       {/* Profile Preview Section */}
       
       {/* Profile About Section */}
@@ -31,16 +20,11 @@ const Profile = () => {
         <ProfileAchievements />
       </section>
 
-      {/* Profile Accomplishments Section */}
-      <section className="bg-gray-100 p-4 rounded-lg shadow-sm">
-        <ProfileAccomplishments />
-      </section>
-
       {/* Profile Share Section */}
       <section className="bg-gray-100 p-4 rounded-lg shadow-sm">
         <ProfileShare />
       </section>
-    </div>
+    </>
   );
 };
 
