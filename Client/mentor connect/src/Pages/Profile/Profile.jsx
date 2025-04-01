@@ -3,7 +3,7 @@ import ProfilePrivew from './Components/ProfilePrivew'
 import PersonalInformation from './Components/PersonalInformation'
 import ProfileAbout from './Components/ProfileAbout'
 import ProfileAchievements from './Components/ProfileAchievements'
-import ProfileAccomplishments from './Components/profileAccomplishments'
+//import ProfileAccomplishments from './Components/profileAccomplishments'
 
 const Profile = () => {
   return (
@@ -12,7 +12,7 @@ const Profile = () => {
     <PersonalInformation/>
     <ProfileAbout/>
     <ProfileAchievements/>
-    <ProfileAccomplishments/>
+    {/* {<ProfileAccomplishments/>} */}
     
     </>
   )
