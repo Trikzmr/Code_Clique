@@ -34,6 +34,7 @@ const Team = (props) => {
       const response = await fetch(api, container);
 
       const data = await response.json();
+      //data.Team.push(data.username)
       setTeamList(data.Team);
       //console.log(data.Team);     
     } catch (error) {

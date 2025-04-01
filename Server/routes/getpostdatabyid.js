@@ -9,6 +9,7 @@ async function api(req,res){
     try {
         let user = await data.findOne({_id});
         console.log(user);
+        user.Team.push(user.username)
         res.json(user);
     } catch (error) {
         res.json(error);
