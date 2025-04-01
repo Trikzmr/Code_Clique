@@ -51,6 +51,7 @@ const CreateTaskForm = () => {
         )
         const data = await res.json();
         console.log(data);
+        alert("task is succesfully created");
       }
       catch(err){
         console.log(err);
