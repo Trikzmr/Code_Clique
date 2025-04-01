@@ -1,9 +1,10 @@
+
 import React from "react";
 import ProfilePrivew from "./Components/ProfilePrivew";
 import PersonalInformation from "./Components/PersonalInformation";
 import ProfileAbout from "./Components/ProfileAbout";
 import ProfileAchievements from "./Components/ProfileAchievements";
-import ProfileAccomplishments from "./Components/ProfileAccomplishments";
+// import ProfileAccomplishments from "./Components/ProfileAccomplishments";
 import ProfileShare from "./Components/ProfileShare";
 
 const Profile = () => {
@@ -32,10 +33,10 @@ const Profile = () => {
         <ProfileAchievements />
       </section>
 
-      {/* Profile Accomplishments Section */}
-      <section className="bg-gray-100 p-4 rounded-lg shadow-sm">
-        <ProfileAccomplishments />
-      </section>
+//       {/* Profile Accomplishments Section */}
+//       <section className="bg-gray-100 p-4 rounded-lg shadow-sm">
+//         <ProfileAccomplishments />
+//       </section>
 
       {/* Profile Share Section */}
       <section className="bg-gray-100 p-4 rounded-lg shadow-sm">
