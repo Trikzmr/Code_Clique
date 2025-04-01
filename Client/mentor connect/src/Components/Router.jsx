@@ -7,6 +7,7 @@ import ProjectDetails from '../Pages/Project/ProjectDetails';
 import Requestform from '../Pages/Home/Components/Requestform';
 import Profile from '../Pages/Profile/Profile';
 import Register from '../Pages/Authentication/Register';
+import AddProject from '../Pages/Home/Components/AddProject';
 
 
 const Router = () => {
@@ -20,7 +21,7 @@ const Router = () => {
                 <Route path="/project/details/:id" element={<ProjectDetails/>} />
                 <Route path="/requestform" element={<Requestform/>} />  
                 <Route path="/profile" element={<Profile/>} />  
-                
+                <Route path="/addproject" element= {<AddProject/>}/>
             </Routes>
         </BrowserRouter>
     );

@@ -21,6 +21,7 @@ const AssignMembers = require('./routes/AssignMembers')
 const FindTaskByTaskId = require('./routes/FindTaskByTaskId')
 const changetaskstatus = require('./routes/ChangeTaskStatus')
 const deleteTask = require('./routes/DeleteTaskById')
+const getmytask = require('./routes/getMyTask')
 
 
 const port = 3000
@@ -79,6 +80,7 @@ app.use('/api', AssignMembers) //find task by project id
 app.use('/api', FindTaskByTaskId) //find task by task id
 app.use('/api', changetaskstatus) // change task status
 app.use('/api', deleteTask) //delete task by id
+app.use('/api', getmytask) // get the task assigend to you
 
 
 
