@@ -2,7 +2,7 @@ import React from 'react';
 
 const PersonalInformation = () => {
   return (
-    <div className="bg-white shadow-lg rounded-lg p-6 w-96 text-center mx-auto mt-10">
+    <div className="bg-white shadow-lg  p-6 text-center mx-auto mt-10 rounded-xl">
       <h2 className="text-xl font-semibold text-gray-800">Personal Information</h2>
       <hr className="my-4" />
       <div className="text-left text-gray-700 space-y-3">
