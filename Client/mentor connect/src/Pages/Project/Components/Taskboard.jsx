@@ -4,8 +4,6 @@ import ListMembers from "../../ProjectManagement/components/ecommerce/ListMember
 
 export default function Taskboard({ id }) {
   const [tasks, setTasks] = useState([{Members:[]}]);
-  const [filter, setFilter] = useState("All");
-  const currentUser = localStorage.getItem("username");
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -26,42 +24,63 @@ export default function Taskboard({ id }) {
     fetchTasks();
   }, [id]);
 
-  // Expanded sample tasks for UI testing
-  const sampleTasks = [
-    { id: 1, Title: "Setup Repo", Description: "Initialize GitHub repo", Status: "To Do", AssignedTo: "alice" },
-    { id: 2, Title: "Design UI", Description: "Create initial UI wireframe", Status: "To Do", AssignedTo: "bob" },
-    { id: 3, Title: "API Integration", Description: "Connect frontend with backend", Status: "In Progress", AssignedTo: "alice" },
-    { id: 4, Title: "Fix Login Issue", Description: "Resolve JWT token expiration", Status: "In Progress", AssignedTo: "charlie" },
-    { id: 5, Title: "Deploy App", Description: "Push to production", Status: "Completed", AssignedTo: "bob" },
-    { id: 6, Title: "Write Tests", Description: "Add Jest unit tests", Status: "To Do", AssignedTo: "charlie" },
-    { id: 7, Title: "Improve Performance", Description: "Optimize API calls", Status: "In Progress", AssignedTo: "alice" },
-    { id: 8, Title: "Database Schema Update", Description: "Modify user schema", Status: "Completed", AssignedTo: "bob" },
-    { id: 9, Title: "Implement Drag & Drop", Description: "Enable card movement", Status: "To Do", AssignedTo: "alice" },
-    { id: 10, Title: "Bug Fix: Dark Mode", Description: "Resolve UI glitches in dark mode", Status: "In Progress", AssignedTo: "charlie" },
-    { id: 11, Title: "User Feedback Review", Description: "Analyze feedback & plan changes", Status: "Completed", AssignedTo: "alice" },
-    { id: 12, Title: "Update Docs", Description: "Improve README.md", Status: "To Do", AssignedTo: "bob" },
-  ];
+  const getmyTask = async () => {
+    try{
+      const api = "http://localhost:3000/api/getmytask";
+      const container = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ProjectId:id}),
+        credentials: 'include'   
+      };
+      const res = await fetch(api, container);
+      const data = await res.json();
+      setTasks(data);
+    }
+    catch(error){
+      console.log(error);
+    }
+  }
+  const fetchalltask = async() => {
+    try {
+      const res = await fetch("http://localhost:3000/api/FindTaskByProjectId", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ProjectId: id }),
+      });
+      const data = await res.json();
+      console.log("Fetched tasks:", data);
+      setTasks(data);
+    } catch (error) {
+      console.error("Error fetching tasks:", error);
+    }
+  }
+  
 
-  const displayedTasks = tasks.length > 0 ? tasks : sampleTasks;
-  console.log("Displayed Tasks:", displayedTasks);
 
-  const filteredTasks = filter === "All" ? displayedTasks : displayedTasks.filter((task) => task.Username === "john_doe");
-
+ 
   const getTasksByStatus = (status) => {
-    const tasksByStatus = filteredTasks.filter((task) => task.Status === status);
+    const tasksByStatus = tasks.filter((task) => task.Status === status);
     console.log(`Tasks for ${status}:`, tasksByStatus);
     return tasksByStatus;
   };
 
   return (
     <div className="p-4 h-screen flex flex-col">
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-semibold">Kanban Board</h2>
+      <div className="flex justify-between items-center mb-4 gap-4">
+        <h2 className="text-xl font-semibold w-6/10">Kanban Board</h2>
         <button
-          className="px-4 py-2 rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300 transition"
-          onClick={() => setFilter(filter === "All" ? "My" : "All")}
+          className="px-4 py-2 rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300 transition w-2/10"
+        onClick={fetchalltask}>
+          All Tasks
+        </button>
+        <button
+          className="px-4 py-2 rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300 transition w-2/10"
+          onClick={getmyTask}
         >
-          {filter === "All" ? "Show My Tasks" : "Show All Tasks"}
+          My Tasks
         </button>
       </div>
 
