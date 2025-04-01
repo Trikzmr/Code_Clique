@@ -29,6 +29,24 @@ const TaskDetails = () => {
         }
     }
 
+    const deletetask = async()=>{
+        const api = "http://localhost:3000/api/deleteTask";
+        const container = {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({_id:id}),
+        }
+        try {
+            const res = await fetch(api, container);
+            const data =await res.json();
+            window.location.href = `/project/${data.ProjectId}`;
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     const onload = () =>{
         fetchprojectdata();
     }
@@ -37,6 +55,11 @@ const TaskDetails = () => {
   return (
     <div className='md:flex gap-6'>
         <div className="tasksummary md:w-9/12">
+        <div className="taskactions overflow-hidden rounded-2xl border border-gray-200 bg-white px-4 pb-3 pt-4 sm:px-6 flex mb-6">
+            <div className="actonmessage w-6/10">Not satisfied with task!</div>
+            <div className="updateButton w-2/10 ">Update</div>
+            <div className="deleteButton w-2/10 font-semibold py-2 rounded-lg transition bg-red-300 hover:bg-red-400 text-red-800 text-center" onClick={deletetask}>Delete</div>
+        </div>
             <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white px-4 pb-3 pt-4 sm:px-6 ">
                 <h2 className="text-lg font-semibold text-gray-700 border-l-4 border-blue-500 pl-2">
                     Task Summary
@@ -80,6 +103,7 @@ const TaskDetails = () => {
                     </div>
                 </div>
             </div>
+            
         </div>
         <div className="taskStats md:w-3/12">
             <TaskAdditionalDetailsCard task={ProjectData}/>

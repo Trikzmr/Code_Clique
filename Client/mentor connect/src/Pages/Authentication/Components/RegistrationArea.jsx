@@ -40,7 +40,7 @@ const RegistrationArea = () => {
   };
 
   return (
-    <div className="RegisterArea max-w-[404px] mx-auto mt-10 p-4">
+    <div className="RegisterArea mx-auto w-[60%]">
       <div className="RegisterHeader mb-6">
         <h1 className="text-2xl font-semibold">Create an Account</h1>
         <p className="text-sm text-gray-600">Fill in the details to register</p>
