@@ -4,6 +4,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
 
+* {
+  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer & Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
 
 :root {
   --primary: #6c63ff;
@@ -95,3 +103,9 @@ body {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.addprojectpageright{
+  background-image: url(./Pages/Home/Components/Assets/sideimage.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

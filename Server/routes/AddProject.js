@@ -7,8 +7,10 @@ const authenticate = require('../Middleware/Authentication');
 
 
 // Register Route
-api.post('/AddProject', async (req, res) => {
-  const {username,Title,Description,Category,Keyskills} = req.body;
+api.post('/AddProject', authenticate , async (req, res) => {
+  const {Username} = req.user;
+  const {Title,Description,Category,Keyskills, Keypoints} = req.body;
+  const username =Username;
 
   try {
     // Create a new user
@@ -17,7 +19,8 @@ api.post('/AddProject', async (req, res) => {
         Title,
         Description,
         Category,
-        Keyskills
+        Keyskills,
+        Keypoints,
     });
 
     // Save the user to the database
