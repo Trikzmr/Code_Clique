@@ -5,7 +5,6 @@ const Postschema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
-    
   },
   Title: {
     type: String,
@@ -46,6 +45,9 @@ const Postschema = new mongoose.Schema({
   Notice: {
     type: [String],
     
+  },
+  Keypoints:{
+    type: [String],
   },
 
   createdAt: {
