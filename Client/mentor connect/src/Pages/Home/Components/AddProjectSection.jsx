@@ -10,9 +10,6 @@ const AddProjectSection = () => {
         <button className="px-6 py-3 bg-yellow-400 text-black font-semibold rounded-lg shadow-md hover:bg-yellow-500 transition-transform transform hover:scale-105" onClick={() => window.location.href='/addproject'}>
           ➕ Add Project
         </button>
-        <button className="px-6 py-3 bg-white text-blue-700 font-semibold rounded-lg shadow-md hover:bg-gray-100 transition-transform transform hover:scale-105">
-          🔍 Explore Projects
-        </button>
       </div>
       
       <div className="mt-8 text-gray-300 text-sm">

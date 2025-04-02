@@ -57,7 +57,7 @@ const RequestForm = () => {
     senddata();
   }
   return (
-    <div className="max-w-lg mx-auto p-6 bg-white shadow-lg rounded-lg">
+    <div className="max-w-lg mx-auto p-6 rounded-2xl border border-gray-200 bg-white">
       <h1 className="text-3xl font-bold text-gray-800  mb-6">
         Join Project
       </h1>
@@ -74,7 +74,7 @@ const RequestForm = () => {
         {/* Message Input */}
         <textarea
           id="message"
-          rows="4"
+          rows="8"
           placeholder="Write a message to the project owner"
           className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         ></textarea>

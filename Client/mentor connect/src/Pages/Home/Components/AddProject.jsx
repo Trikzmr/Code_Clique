@@ -88,7 +88,7 @@ const AddProject = () => {
                   className="w-7/10 p-2 border rounded-md mt-2 mb-2"
                 />
               ))}<br/>
-              <button onClick={addKeyPointField} type="button" className="mt-2 mb-2">Add More</button>
+              <button onClick={addKeyPointField} type="button" className="mt-2 mb-2 w-2/10 bg-purple-600 text-white p-2 rounded-md hover:bg-purple-700 transition">Add More</button>
               {errors.keyPoints && <p className="text-red-500 text-sm">{errors.keyPoints}</p>}
             </div>
 
