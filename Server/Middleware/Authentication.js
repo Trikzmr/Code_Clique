@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken');
 const User = require('../model/userModel');
 const cookieParser = require("cookie-parser"); 
 require('dotenv').config();
+const express = require('express');
+const router = express.Router();
 
 const authenticate = async (req, res, next) => {
     try {
