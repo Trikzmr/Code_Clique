@@ -1,94 +1,81 @@
 const express = require('express');
 const cors = require("cors");
-const Base = require('./routes/Base')
-const RegisterUser = require('./routes/RegisterUser')
-const AllUser = require('./routes/AllUsers')
-const Login = require('./routes/Login')
-const AddProject = require('./routes/AddProject')
-const getpostdata = require('./routes/getPostdata')
+const http = require("http"); // Import http module
+const { Server } = require("socket.io"); // Import socket.io
 const cookieParser = require("cookie-parser");
-const getpostdatabyid = require('./routes/getpostdatabyid')
-const getmyproject = require('./routes/GetMyProject')
-const newTeam = require('./routes/newteam')
-const SendRequest = require('./routes/SendRequest')
-const getrequestbyprojectid = require('./routes/getRequestByProjectId')
-const DeleteRequest = require('./routes/DeleteRequest')
-const GetUser = require('./routes/GetUser')
-const addTask = require('./routes/AddTask')
-const FindTaskByProjectId = require('./routes/FindTaskByProjectId')
-const counter = require('./model/counter')
-const AssignMembers = require('./routes/AssignMembers')
-const FindTaskByTaskId = require('./routes/FindTaskByTaskId')
-const changetaskstatus = require('./routes/ChangeTaskStatus')
-const deleteTask = require('./routes/DeleteTaskById')
-const getmytask = require('./routes/getMyTask')
-
-
-const port = 3000
-const app = express();
 require('dotenv').config();
 
-// middleware
-app.use(cors({ 
+// Import Routes
+const Base = require('./routes/Base');
+const RegisterUser = require('./routes/RegisterUser');
+const AllUser = require('./routes/AllUsers');
+const Login = require('./routes/Login');
+const AddProject = require('./routes/AddProject');
+const getpostdata = require('./routes/getPostdata');
+const getpostdatabyid = require('./routes/getpostdatabyid');
+const getmyproject = require('./routes/GetMyProject');
+const newTeam = require('./routes/newteam');
+const SendRequest = require('./routes/SendRequest');
+const getrequestbyprojectid = require('./routes/getRequestByProjectId');
+const DeleteRequest = require('./routes/DeleteRequest');
+const GetUser = require('./routes/GetUser');
+const addTask = require('./routes/AddTask');
+const FindTaskByProjectId = require('./routes/FindTaskByProjectId');
+const counter = require('./model/counter');
+const AssignMembers = require('./routes/AssignMembers');
+const FindTaskByTaskId = require('./routes/FindTaskByTaskId');
+const changetaskstatus = require('./routes/ChangeTaskStatus');
+const deleteTask = require('./routes/DeleteTaskById');
+const getmytask = require('./routes/getMyTask');
+const Message = require("./model/Messages");
+
+// Initialize Express app
+const app = express();
+const port = 3000;
+
+// Create HTTP server for socket.io
+const server = http.createServer(app);
+
+// Middleware
+app.use(cors({
   origin: ["http://localhost:5173", "http://localhost:5174"],
-  credentials: true, 
+  credentials: true,
 }));
 app.use(express.json());
 app.use(cookieParser());
 
-// Connect to MongoDB 
+// MongoDB Connection
 require("./db/conn");
 
-const count = async() => {
-  try {
-    const cnt = await counter.findOne();
-    console.log(cnt);
-    if(cnt === null || cnt.length === 0){
-      const count = new counter();
-      await count.save();
-    }
-    else{
-      let n = cnt.Count;
-      n++;
-      await counter.updateOne({Count: n});
-    } 
-    return;
-  } catch (error) {
-    console.error(error.message);
-    return;
-  }
-}
+
+// Import and initialize Socket.IO
+const initSocket = require("./Socket/MessageHandler");
+initSocket(server); // Pass the server to socket.js
 
 
-//user routes
-app.use('', Base); // base page
-app.use('/api', RegisterUser) // to register new user
-app.use('/api', AllUser) //to show details of all user
-app.use('/api', Login) //to login the user
-app.use('/api', AddProject) // to create a new project post
-app.use('/api', getpostdata) // to get all post data
-app.use('/api', getpostdatabyid) // to get post data by id
-app.use('/api', getmyproject) // get projects you are working in
-app.use('/api', SendRequest) // send join request to project
-app.use('/api', getrequestbyprojectid) // get request list of specific project id
-app.use('/api', newTeam) //add member to team
-app.use('/api', DeleteRequest) // delete request from request schema
-app.use('/api', GetUser) // get data of a perticular user
-app.use('/api', addTask) //add task to a project
-app.use('/api', FindTaskByProjectId) //find task by project id
-app.use('/api', AssignMembers) //find task by project id
-app.use('/api', FindTaskByTaskId) //find task by task id
-app.use('/api', changetaskstatus) // change task status
-app.use('/api', deleteTask) //delete task by id
-app.use('/api', getmytask) // get the task assigend to you
+// Routes
+app.use('', Base);
+app.use('/api', RegisterUser);
+app.use('/api', AllUser);
+app.use('/api', Login);
+app.use('/api', AddProject);
+app.use('/api', getpostdata);
+app.use('/api', getpostdatabyid);
+app.use('/api', getmyproject);
+app.use('/api', SendRequest);
+app.use('/api', getrequestbyprojectid);
+app.use('/api', newTeam);
+app.use('/api', DeleteRequest);
+app.use('/api', GetUser);
+app.use('/api', addTask);
+app.use('/api', FindTaskByProjectId);
+app.use('/api', AssignMembers);
+app.use('/api', FindTaskByTaskId);
+app.use('/api', changetaskstatus);
+app.use('/api', deleteTask);
+app.use('/api', getmytask);
 
-
-
-
-
-
-// Start the server
-app.listen(port, "0.0.0.0" ,() => {
-    console.log(`Server running at http://0.0.0.0:${port}`);
-  });
-// first push
+// Start the server with socket.io
+server.listen(port, "0.0.0.0", () => {
+  console.log(`Server running at http://0.0.0.0:${port}`);
+});
