@@ -1,15 +1,37 @@
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 
-const Messages = () => {
+const Messages = ({id}) => {
     const [message, setMessage] = useState("");
     const [messages, setMessages] = useState([]);
-    let username = "deb";
-    let roomId = "room1";
+    const [user, setuser] = useState({});
+    const [username, setusername] = useState("deb");
+    let roomId = id;
+    const getmyusername = async () => {
+        
+        try{
+          const api = "http://localhost:3000/api/messageapi";
+          const container = {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            credentials: 'include'   
+          };
+          const res = await fetch(api, container);
+          const data = await res.json();
+          setuser(data);
+          setusername(data.Username)
+        }
+        catch(error){
+          console.log(error);
+        }
+      }
 
     useEffect(() => {
         // Create a new socket connection inside useEffect
         const socket = io("http://localhost:3000", { transports: ["websocket"] });
+
 
         // Join a specific project chat room
         console.log("Joining room:", roomId);
@@ -28,9 +50,15 @@ const Messages = () => {
         return () => {
             socket.disconnect();
         };
-    }, [roomId]); // Dependency on roomId to rejoin on change
+    }, [roomId, username]); // Dependency on roomId to rejoin on change
 
-    // Send message to server
+    const apicall =()=>{
+        getmyusername();
+    }
+
+    useEffect(apicall, [])
+
+    // Send message to server 
     const sendMessage = () => {
         if (message.trim() !== "") {
             // Reconnect the socket before sending a message
