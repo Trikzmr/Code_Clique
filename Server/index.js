@@ -28,7 +28,8 @@ const changetaskstatus = require('./routes/ChangeTaskStatus');
 const deleteTask = require('./routes/DeleteTaskById');
 const getmytask = require('./routes/getMyTask');
 const Message = require("./model/Messages");
-const messageapi = require("./routes/Messageapi")
+const messageapi = require("./routes/Messageapi");
+const updatetask = require("./routes/UpdateTask");
 
 // Initialize Express app
 const app = express();
@@ -76,6 +77,7 @@ app.use('/api', changetaskstatus);
 app.use('/api', deleteTask);
 app.use('/api', getmytask);
 app.use('/api', messageapi);
+app.use('/api', updatetask);
 
 // Start the server with socket.io
 server.listen(port, "0.0.0.0", () => {

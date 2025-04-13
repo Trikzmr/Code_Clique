@@ -7,6 +7,7 @@ import Team from './Components/Team';
 import Calander from './Components/Calander';
 import Taskboard from './Components/Taskboard'
 import TaskDetails from './Components/TaskDetails';
+import ProjectOverview from './Components/ProjectOverview';
 
 const ProjectDashboard = () => {
     const { id } = useParams();
@@ -22,8 +23,12 @@ const ProjectDashboard = () => {
                     <div className="projectDashboardLeftItem text-gray-700 tracking-widest font-semibold mb-0">
                         MENU
                     </div>
+                    
                     <div className="projectDashboardLeftItem ml-2 text-gray-500 p-4 button-accent rounded-full">
                         <Link to={`/project/${id}`}>Dashboard</Link>
+                    </div>
+                    <div className="projectDashboardLeftItem ml-2 text-gray-500 p-4 ">
+                        <Link to={`/project/${id}/overview`}>Overview</Link>
                     </div>
                     <div className="projectDashboardLeftItem ml-2 text-gray-500 p-4">
                         <Link to={`/project/${id}/messages`}>Messages</Link>
@@ -44,11 +49,12 @@ const ProjectDashboard = () => {
             <div className="projectDashboardRight flex-grow overflow-auto p-4 border border-gray-200 bg-gray-50 rounded-4xl mt-4 min-h-screen max-h-screen overflow-y-scroll">
                 <Routes>
                     <Route path="" element={<Dashboard id={id}/>} />
+                    <Route path="/overview" element={<ProjectOverview id={id}/>} />
                     <Route path="/messages" element={<Messages id={id} />} />
                     <Route path="/mytask" element={<MyTask id={id} />} />
                     <Route path="/team" element={<Team id={id} />} />
                     <Route path="/taskboard" element={<Taskboard id={id} />} />
-                    <Route path="/task/:id" element={<TaskDetails id={id} />} />
+                    <Route path="/task/:id/*" element={<TaskDetails id={id} />} />
                 </Routes>
             </div>
         </div>
