@@ -11,10 +11,10 @@ const Navbar = () => {
             <span className="text-2xl font-bold text-blue-600">Logo</span>
           </div>
           <div className="hidden md:flex space-x-8">
-            <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Dashboard</a>
-            <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Team</a>
-            <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Projects</a>
-            <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Calendar</a>
+            <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">About Us</a>
+            <a href="/" className="text-gray-700 hover:text-blue-600 font-medium">Home</a>
+            <a href="/profile" className="text-gray-700 hover:text-blue-600 font-medium">Profile</a>
+            <a href="/login" className="text-gray-700 hover:text-blue-600 font-medium">Login</a>
           </div>
           <div className="md:hidden flex items-center">
             <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700 focus:outline-none">

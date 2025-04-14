@@ -31,16 +31,17 @@ const ProjectDashboard = () => {
                         <Link to={`/project/${id}/overview`}>Overview</Link>
                     </div>
                     <div className="projectDashboardLeftItem ml-2 text-gray-500 p-4">
-                        <Link to={`/project/${id}/messages`}>Messages</Link>
+                        <Link to={`/project/${id}/taskboard`}>Tasks</Link>
                     </div>
                     <div className="projectDashboardLeftItem ml-2 text-gray-500 p-4">
-                        <Link to={`/project/${id}/mytask`}>My Task</Link>
+                        <Link to={`/project/${id}/messages`}>Messages</Link>
                     </div>
                     <div className="projectDashboardLeftItem ml-2 text-gray-500 p-4">
                         <Link to={`/project/${id}/team`}>Team</Link>
                     </div>
+                    
                     <div className="projectDashboardLeftItem ml-2 text-gray-500 p-4">
-                        <Link to={`/project/${id}/taskboard`}>Task Board</Link>
+                        <Link to={`/project/${id}/mytask`}>Add Task</Link>
                     </div>
                 </div>                
             </div>
