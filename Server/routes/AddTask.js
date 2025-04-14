@@ -4,13 +4,13 @@ const api = express.Router();
 const authenticate = require('../Middleware/Authentication');
 
 const apicall = async (req, res) =>{
-    const { ProjectId, Title, Description, ProjectOwner, StartDate, EndDate, Status } = req.body;
+    const { ProjectId, Title, Description, ProjectOwner, StartDate, EndDate, Status, Members } = req.body;
     const{Username} = req.user;
     try{
 
         
         const task = new Task({
-            ProjectId, Title, Description, ProjectOwner, StartDate, EndDate, Status , Username
+            ProjectId, Title, Description, ProjectOwner, StartDate, EndDate, Status , Username, Members
         });
 
 
@@ -18,7 +18,7 @@ const apicall = async (req, res) =>{
         res.status(201).json({message: "Task added sucess"});
 
     }
-    catch(error){
+    catch(error){  
         console.error(error.message);
         res.status(500).send("server error");
     }

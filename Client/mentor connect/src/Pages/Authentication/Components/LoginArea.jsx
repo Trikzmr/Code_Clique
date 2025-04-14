@@ -24,7 +24,7 @@ const LoginArea = () => {
       const data = await response.json();
 
       if (response.ok) {
-        navigate('/home');
+        navigate('/');
       } else {
         // Handle login failure
         alert(data.message || 'Login failed!');

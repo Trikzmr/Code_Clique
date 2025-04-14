@@ -69,18 +69,49 @@ const Messages = ({id}) => {
     };
 
     return (
-        <div>
-            <h2>Room: {roomId}</h2>
-            <div>
-                {messages.map((msg, i) => (
-                    <p key={i}>
-                        <b>{msg.sender}:</b> {msg.message} <small>({new Date(msg.timestamp).toLocaleTimeString()})</small>
+        <div className=" MessagesSection flex flex-col p-4 rounded-2xl bg-white shadow-md max-h-[80vh] min-h-[80vh] w-full">
+            <div className="flex-1 overflow-y-auto space-y-3 mb-4">
+            {messages.map((msg, i) => (
+                <div
+                    key={i}
+                    className={`flex ${
+                    msg.sender === username ? "justify-end" : "justify-start"
+                    }`}
+                >
+                    <div
+                    className={`max-w-xs px-4 py-2 rounded-xl shadow-sm ${
+                        msg.sender === username
+                        ? "bg-blue-100 text-blue-900"
+                        : "bg-gray-100 text-gray-800"
+                    }`}
+                    >
+                    <p className="text-sm font-medium">{msg.sender}</p>
+                    <p className="text-base">{msg.message}</p>
+                    <p className="text-xs text-gray-500 text-right">
+                        {new Date(msg.timestamp).toLocaleTimeString()}
                     </p>
-                ))}
+                    </div>
+                </div>
+            ))}
+
             </div>
-            <input value={message} onChange={(e) => setMessage(e.target.value)} />
-            <button onClick={sendMessage}>Send</button>
+
+            <div className="flex items-center gap-2">
+                <input
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-300"
+                placeholder="Type your message..."
+                />
+                <button
+                onClick={sendMessage}
+                className="px-4 py-2 bg-blue-500 text-white rounded-xl hover:bg-blue-600 transition"
+                >
+                Send
+                </button>
+            </div>
         </div>
+
     );
 };
 
