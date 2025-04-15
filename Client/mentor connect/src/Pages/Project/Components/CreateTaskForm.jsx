@@ -1,3 +1,4 @@
+import { Key } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
 import {useParams} from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
@@ -6,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const CreateTaskForm = () => {
     let projectid = useParams().id;
     const [Team, setTeam] = useState([]);
+    const [keyPoints, setKeyPoints] = useState([""]);
     
     useEffect(()=>{
         const fetchprojectdata = async() =>{
@@ -38,8 +40,17 @@ const CreateTaskForm = () => {
       EndDate: "",
       Status: "Initiated",
       Members: [],
+      Keypoints: [],
     }
+    const handleKeyPointChange = (index, value) => {
+      const newKeyPoints = [...keyPoints];
+      newKeyPoints[index] = value;
+      setKeyPoints(newKeyPoints);
+    };
 
+    const addKeyPointField = () => {
+      setKeyPoints([...keyPoints, ""]);
+    };
     const clearFormInputs = () => {
       document.getElementById("Title").value = "";
       document.getElementById("Description").value = "";
@@ -109,6 +120,7 @@ const CreateTaskForm = () => {
     const CreateTask =(e) => {
       e.preventDefault();
       getforminputs();
+      request.Keypoints = keyPoints;
       senddata();
     }
 
@@ -155,6 +167,21 @@ const CreateTaskForm = () => {
               />
             </div>
             <div className="formright w-1/2">
+              <div className="KeyPoints mb-4">
+                <label className="block text-gray-600">Key Points</label>
+                {keyPoints.map((point, index) => (
+                  <input
+                    key={index}
+                    type="text"
+                    value={point}
+                    onChange={(e) => handleKeyPointChange(index, e.target.value)}
+                    placeholder={`Key Point ${index + 1}`}
+                    className="w-7/10 p-2 border rounded-md mt-2 mb-2"
+                  />
+                ))}<br/>
+                <button onClick={addKeyPointField} type="button" className="mt-2 mb-2 w-2/10 bg-purple-600 text-white p-2 rounded-md hover:bg-purple-700 transition">Add More</button>
+                
+              </div>
               <h4 className='text-lg font-semibold text-gray-800'>Assign Members</h4>
               {/* Team members list to select and add to Memebers array  */}
               <div className="teamMembers flex flex-col gap-4 mt-4">

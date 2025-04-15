@@ -65,7 +65,7 @@ const TaskDetails = () => {
                 <div className="deleteButton w-2/10 font-semibold py-2 rounded-lg transition bg-red-300 hover:bg-red-400 text-red-800 text-center" onClick={deletetask}>Delete</div>
             </div>
             <Routes>
-                <Route path="" element={<TaskDetailsComponent/>} />
+                <Route path="" element={<TaskDetailsComponent data={ProjectData}/>} />
                 <Route path="/updatetask" element={<UpdateTask id={id}/>}/>
             </Routes>            
         </div>
