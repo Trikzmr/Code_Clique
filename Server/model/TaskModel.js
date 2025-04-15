@@ -33,6 +33,10 @@ const Task = new mongoose.Schema({
         type: [String],
 
     },
+    Keypoints: {
+        type: [String],
+
+    },
     Status: {
         type:String,
         require:true,
