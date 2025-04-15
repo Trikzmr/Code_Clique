@@ -20,7 +20,7 @@ const Profile = () => {
       </section>
 
       {/* ProfileAbout (60%) and right column (40%) side by side */}
-      <section className="flex flex-col md:flex-row gap-4">
+      <section className="flex flex-col md:flex-row gap-4 mb-4">
         <div className="bg-gray-100 p-4 rounded-lg shadow-sm w-full md:w-[60%]">
           <ProfileAbout />
         </div>
