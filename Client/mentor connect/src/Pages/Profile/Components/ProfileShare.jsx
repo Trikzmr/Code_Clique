@@ -5,7 +5,7 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 const ProfileShare = () => {
   return (
-    <div className="max-w-md mx-auto p-6 bg-white shadow-lg rounded-2xl text-center">
+    <div className="max-w-md mx-auto p-6 text-center">
       <h2 className="text-xl font-semibold text-gray-800">Share your profile</h2>
       <p className="text-gray-500 text-sm mt-2">
         Now that your agency is created, go ahead and share it to start generating leads.
@@ -42,7 +42,12 @@ const ProfileShare = () => {
         Copy the URL below and share it with your friends:
       </p>
       <div className="mt-2 flex items-center rounded-lg p-2 shadow-md bg-gray-100">
-        <input type="text" value="https://larkon-mileage.com" readOnly className="flex-1 bg-transparent text-gray-700 outline-none" />
+        <input
+          type="text"
+          value="https://larkon-mileage.com"
+          readOnly
+          className="flex-1 bg-transparent text-gray-700 outline-none"
+        />
         <button className="p-2">
           📋
         </button>

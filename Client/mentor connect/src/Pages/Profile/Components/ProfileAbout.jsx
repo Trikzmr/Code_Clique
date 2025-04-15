@@ -2,7 +2,7 @@ import React from "react";
 
 const Profile = () => {
   return (
-    <div className="p-6 bg-white shadow-lg rounded-xl">
+    <div className="relative w-full h-[100%] overflow-hidden ">
       <section className="mb-6">
         <h2 className="text-2xl font-bold mb-2 flex items-center">About</h2>
         <hr className="my-4" />

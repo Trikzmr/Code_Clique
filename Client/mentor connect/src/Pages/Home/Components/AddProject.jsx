@@ -60,7 +60,7 @@ const AddProject = () => {
 
   return (
     <div className="AddProjectPage flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="addprojectpageleft w-7/10 p-12 max-h-screen overflow-y-scroll ">
+      <div className="addprojectpageleft w-13/20 p-12 max-h-screen overflow-y-scroll ">
         <div className="max-w-4xl mx-auto p-6 bg-white rounded-3xl border border-gray-200">
           <h2 className="text-2xl font-semibold text-gray-700 mb-6">Post Your Ideas</h2>
           <form className="gap-4" onSubmit={handleSubmit}>
@@ -122,7 +122,7 @@ const AddProject = () => {
           </form>
         </div>
       </div>
-      <div className="addprojectpageright w-3/10 min-h-screen">
+      <div className="addprojectpageright w-7/20 min-h-screen">
               
       </div>
       
