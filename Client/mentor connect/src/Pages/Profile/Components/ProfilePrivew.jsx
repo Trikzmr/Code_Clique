@@ -4,7 +4,7 @@ const ProfilePreview = () => {
   return (
     <div className="relative w-full h-[100%] overflow-hidden">
       {/* Background Image */}
-      <div className="h-32 bg-cover bg-center" 
+      <div className="h-45 bg-center rounded-t-lg" 
         style={{ backgroundImage: `url('https://plus.unsplash.com/premium_photo-1701534008693-0eee0632d47a?q=80&w=1031&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')` }}>
       </div>
 
