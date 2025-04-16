@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import ProjectMembersList from './ProjectMembersList';
+import ProjectAdditionalDetails from './ProjectAdditionalDetails';
 
 const ProjectOverview = ({id}) => {
     let projectid = id;
-    const [projectData, setProjectData] = useState({});
+    const [projectData, setProjectData] = useState({Team:[]});
 
     let keySkills = projectData.Keyskills || [];
     
@@ -29,8 +31,8 @@ const ProjectOverview = ({id}) => {
       }, []);
   return (
     <div className='md:flex gap-6'>
-        <div className="tasksummary md:w-12/12 max-h-screen overflow-y-scroll">
-                <div className="overflow-hidden rounded-2xl border min-w-4xl border-gray-200 bg-white px-4 pb-3 pt-4 sm:px-6 ">
+        <div className="projectleft md:w-9/12 max-h-screen overflow-y-scroll">
+                <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white px-4 pb-3 pt-4 sm:px-6 ">
                 <h2 className="text-lg font-semibold text-gray-700 border-l-4 border-blue-500 pl-2">
                     Project Summary
                 </h2>
@@ -77,6 +79,10 @@ const ProjectOverview = ({id}) => {
                 </div>
             </div>
             
+        </div>
+        <div className="projectright min-w-3/12">
+          
+          <ProjectMembersList id={id} data={projectData}/>
         </div>
     </div>
   )

@@ -9,8 +9,8 @@ import Badge from "../../ProjectManagement/components/ui/badge/Badge";
 import React, {useState, useEffect}from "react";
 
 
-export default function TaskMembersTable({id, data}) {
-    const members=data.Members;
+export default function ProjectMembersList({id, data}) {
+    const members=data.Team;
 
     const [Members, setMembers] = useState([])
   
@@ -19,10 +19,10 @@ export default function TaskMembersTable({id, data}) {
 
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white px-4 pb-3 pt-4 sm:px-6">
+    <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white px-4 pb-3 pt-4 sm:px-6 w-full min-w-full">
       <div className="flex flex-col gap-2 mb-4 sm:flex-row sm:items-center sm:justify-between">
             <h3 className="text-lg font-semibold text-gray-800">
-                <span className="border-l-4 border-blue-500 pl-2">Members Associated with this Task</span>
+                <span className="border-l-4 border-blue-500 pl-2">Team Members</span>
             </h3>
       </div>
 
