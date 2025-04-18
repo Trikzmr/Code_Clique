@@ -26,7 +26,7 @@ const User = new mongoose.Schema({
         type: String,
         require: true
     },
-    Dob: {
+    DateOfBirth: {
         type: String,
 
     },
@@ -52,26 +52,26 @@ const User = new mongoose.Schema({
     },
     ProjectList : {
         type: [String],
-
     },
-    Githuburl: {
+
+    GithubUrl: {
         type: String,
-
     },
+
     Description: {
         type: String,
- 
     },
-   
-    Linkedin: {
-        type: String,
 
+    WebsiteLink: {
+        type: String,
     },
-   
+    LinkedinLink: {
+        type: String,
+    },
    
     createdAt: { 
         type: Date,
-         default: Date.now
+        default: Date.now,
      },
 
 

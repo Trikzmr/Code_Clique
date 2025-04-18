@@ -8,6 +8,7 @@ import Requestform from '../Pages/Home/Components/Requestform';
 import Profile from '../Pages/Profile/Profile';
 import Register from '../Pages/Authentication/Register';
 import AddProject from '../Pages/Home/Components/AddProject';
+import CompleteProfile from '../Pages/Profile/Components/CompleteProfile';
 
 
 const Router = () => {
@@ -22,6 +23,7 @@ const Router = () => {
                 <Route path="/requestform" element={<Requestform/>} />  
                 <Route path="/profile" element={<Profile/>} />  
                 <Route path="/addproject" element= {<AddProject/>}/>
+                <Route path="/completeprofile" element={<CompleteProfile/>}/>
             </Routes>
         </BrowserRouter>
     );
