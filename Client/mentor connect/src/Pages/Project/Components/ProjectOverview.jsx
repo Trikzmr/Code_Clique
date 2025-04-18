@@ -81,7 +81,7 @@ const ProjectOverview = ({id}) => {
             
         </div>
         <div className="projectright min-w-3/12">
-          
+          <ProjectAdditionalDetails id={id} data={projectData}/>
           <ProjectMembersList id={id} data={projectData}/>
         </div>
     </div>

@@ -30,6 +30,7 @@ const getmytask = require('./routes/getMyTask');
 const Message = require("./model/Messages");
 const messageapi = require("./routes/Messageapi");
 const updatetask = require("./routes/UpdateTask");
+const updateUser = require("./routes/UpdateUser");
 
 // Initialize Express app
 const app = express();
@@ -78,6 +79,7 @@ app.use('/api', deleteTask);
 app.use('/api', getmytask);
 app.use('/api', messageapi);
 app.use('/api', updatetask);
+app.use('/api', updateUser);
 
 // Start the server with socket.io
 server.listen(port, "0.0.0.0", () => {
