@@ -4,7 +4,7 @@ import UserDetailsCard from './Components/UserDetailsCard';
 import ProfileDiscription from './Components/ProfileDiscription';
 import ProfileLinks from './Components/ProfileLinks';
 import Gitcal from './Components/Gitcal';
-import Gitlanguage from './Components/gitlanguage';
+//import Gitlanguage from './Components/gitlanguage';
 
 const Profiled = () => {
     const [userDetail, setuserDetail] = useState({});
@@ -60,7 +60,7 @@ const Profiled = () => {
                             <Gitcal/>
                         </div>
                         <div className="gitlang">
-                            <Gitlanguage/>
+                            {/* <Gitlanguage/> */}
                         </div>
                     </div>
                     
