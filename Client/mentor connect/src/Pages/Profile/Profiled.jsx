@@ -3,6 +3,8 @@ import ProfileCard from './Components/ProfileCard'
 import UserDetailsCard from './Components/UserDetailsCard';
 import ProfileDiscription from './Components/ProfileDiscription';
 import ProfileLinks from './Components/ProfileLinks';
+import Gitcal from './Components/Gitcal';
+import Gitlanguage from './Components/gitlanguage';
 
 const Profiled = () => {
     const [userDetail, setuserDetail] = useState({});
@@ -43,16 +45,28 @@ const Profiled = () => {
                     <ProfileCard data={userDetail}/>
                     <UserDetailsCard data={userDetail}/>
                 </div>
-                <div className="Description min-w-7/10 flex gap-4">
-                    <div className="profiledis min-w-7/11 max-w-7/11">
-                        <ProfileDiscription data={userDetail}/>
+                <div className="rightprofile">
+                    <div className="Description min-w-7/10 flex gap-4">
+                        <div className="profiledis min-w-7/11 max-w-7/11">
+                            <ProfileDiscription data={userDetail}/>
+                        </div>
+                        <div className="importantlinks w-4/11 max-w-4/11">
+                            <ProfileLinks data={links}/>
+                        </div>
+                        
                     </div>
-                    <div className="importantlinks w-4/11 max-w-4/11">
-                        <ProfileLinks data={links}/>
+                    <div className="Description min-w-7/10 flex gap-4">
+                        <div className="gitcal min-w-7/11 max-w-7/11">
+                            <Gitcal/>
+                        </div>
+                        <div className="gitlang">
+                            <Gitlanguage/>
+                        </div>
                     </div>
                     
                 </div>
             </div>
+            
         </div>
     </div>
   )
