@@ -31,12 +31,13 @@ const Message = require("./model/Messages");
 const messageapi = require("./routes/Messageapi");
 const updatetask = require("./routes/UpdateTask");
 const updateUser = require("./routes/UpdateUser");
+const userDetails = require("./routes/UserDetail");
 
 // Initialize Express app
 const app = express();
 const port = 3000;
 
-// Create HTTP server for socket.io
+// Create HTTP server for socket.io 
 const server = http.createServer(app);
 
 // Middleware
@@ -80,6 +81,7 @@ app.use('/api', getmytask);
 app.use('/api', messageapi);
 app.use('/api', updatetask);
 app.use('/api', updateUser);
+app.use('/api', userDetails);
 
 // Start the server with socket.io
 server.listen(port, "0.0.0.0", () => {

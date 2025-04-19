@@ -9,6 +9,7 @@ import Profile from '../Pages/Profile/Profile';
 import Register from '../Pages/Authentication/Register';
 import AddProject from '../Pages/Home/Components/AddProject';
 import CompleteProfile from '../Pages/Profile/Components/CompleteProfile';
+import Profiled from '../Pages/Profile/Profiled';
 
 
 const Router = () => {
@@ -24,6 +25,7 @@ const Router = () => {
                 <Route path="/profile" element={<Profile/>} />  
                 <Route path="/addproject" element= {<AddProject/>}/>
                 <Route path="/completeprofile" element={<CompleteProfile/>}/>
+                <Route path="/profiled" element={<Profiled/>}/>
             </Routes>
         </BrowserRouter>
     );
