@@ -2,7 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const MyComponent = (props) => {
-  const { Title, username, Description, Keyskills, _id, Category } = props.project;
+
+  const { Title, username, Description, Keyskills, _id, Category } = props.data;
   const navigate = useNavigate();
 
   const gotodetails = () => {
