@@ -32,6 +32,7 @@ const messageapi = require("./routes/Messageapi");
 const updatetask = require("./routes/UpdateTask");
 const updateUser = require("./routes/UpdateUser");
 const userDetails = require("./routes/UserDetail");
+const ViewAdder = require("./routes/ViewAdder");
 
 // Initialize Express app
 const app = express();
@@ -64,7 +65,7 @@ app.use('/api', AllUser);
 app.use('/api', Login);
 app.use('/api', AddProject);
 app.use('/api', getpostdata);
-app.use('/api', getpostdatabyid);
+app.use('/api', getpostdatabyid); //auth done 
 app.use('/api', getmyproject);
 app.use('/api', SendRequest);
 app.use('/api', getrequestbyprojectid);
@@ -82,6 +83,7 @@ app.use('/api', messageapi);
 app.use('/api', updatetask);
 app.use('/api', updateUser);
 app.use('/api', userDetails);
+app.use('/api', ViewAdder);
 
 // Start the server with socket.io
 server.listen(port, "0.0.0.0", () => {

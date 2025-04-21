@@ -16,6 +16,7 @@ const ProjectOverview = ({id}) => {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({ _id: projectid}),
+            credentials:"include",
           });
           let data = await response.json();
           setProjectData(data);

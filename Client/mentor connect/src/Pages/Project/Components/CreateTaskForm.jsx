@@ -18,6 +18,7 @@ const CreateTaskForm = () => {
                   "Content-Type": "application/json",
                 },
                 body: JSON.stringify({_id:projectid}),
+                credentials: "include",
             }
             try {
                 const res = await fetch(api, container);
@@ -66,6 +67,7 @@ const CreateTaskForm = () => {
                 "content-type": "application/json",
             },
             body: JSON.stringify({ _id: projectid }),
+            credentials: "include",
         }
         try{
             const res = await fetch('http://localhost:3000/api/getpostdatabyid', container);
@@ -184,7 +186,7 @@ const CreateTaskForm = () => {
               </div>
               <h4 className='text-lg font-semibold text-gray-800'>Assign Members</h4>
               {/* Team members list to select and add to Memebers array  */}
-              <div className="teamMembers flex flex-col gap-4 mt-4">
+              <div className="teamMembers flex flex-col gap-4 mt-4 max-h-45 overflow-y-scroll">
                 {Team.map((member, index) => (
                   <div key={index} className="flex items-center gap-4 p-3 bg-gray-100 rounded-lg">
                     <input type="checkbox" id={`member-${index}`} className="w-5 h-5" />
