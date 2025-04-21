@@ -18,7 +18,7 @@ const RegistrationArea = () => {
 
   const handleRegister = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/RegisterUser", {
+      const response = await fetch("https://code-clique-9qgm.vercel.app/api/RegisterUser", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

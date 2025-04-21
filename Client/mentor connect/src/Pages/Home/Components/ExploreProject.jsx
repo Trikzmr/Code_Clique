@@ -49,13 +49,13 @@ const ExploreProject = () => {
     const fetchProjects = async () => {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:3000/api/getpostdata", {
+        const response = await fetch("https://code-clique-9qgm.vercel.app/api/getpostdata", {
           method: "GET",
           headers: { "Content-Type": "application/json" },
           credentials: "include",
         });
 
-        const userres = await fetch("http://localhost:3000/api/userdetails", {
+        const userres = await fetch("https://code-clique-9qgm.vercel.app/api/userdetails", {
           method: "GET",
           headers: { "Content-Type": "application/json" },
           credentials: "include",
