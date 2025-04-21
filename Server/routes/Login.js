@@ -28,7 +28,8 @@ const cookieParser = require("cookie-parser");
         //send cookie for session mangement
         res.cookie("token", token, {
           httpOnly: true,
-          secure: process.env.NODE_ENV === "production", // Enable secure flag in production
+          secure: true,                  // required for cross-site cookies over HTTPS
+          sameSite: 'none'  // Enable secure flag in production
       });
         res.json({
           user
