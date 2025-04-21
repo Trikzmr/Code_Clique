@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ProjectComponent from "./ProjectComponent";
+import {sortbyuser} from "./Sortalgo"
 
 const ExploreProject = () => {
   const [projects, setProjects] = useState([]);
@@ -54,13 +55,23 @@ const ExploreProject = () => {
           credentials: "include",
         });
 
+        const userres = await fetch("http://localhost:3000/api/userdetails", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+        }
+      );
+        const user = await userres.json();
+           
+
         const data = await response.json();
+        let adata=sortbyuser(data, user)
 
         if (response.ok) {
-          setProjects(data);
-          setFilteredProjects(data);
+          setProjects(adata);
+          setFilteredProjects(adata);
         } else {
-          alert(data.message || "Failed to fetch data");
+          //alert(data.message || "Failed to fetch data");
         }
       } catch (error) {
         console.error("Error fetching data:", error);

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import MyComponent from './MyComponent'; // assuming this renders a single project
+import { useNavigate } from 'react-router-dom';
 
 const MyProjectSection = () => {
   const [myProjects, setMyProjects] = useState([]);
   const [index, setIndex] = useState(1);
   const [currentPage, setCurrentPage] = useState([]);
+  const navigate = useNavigate();
 
   // Fetch project data from API
   const fetchProject = async () => {
@@ -20,6 +22,7 @@ const MyProjectSection = () => {
         setMyProjects(projects);
       } else {
         console.error('Failed to fetch projects');
+        navigate('/login'); // Redirect to login if not authenticated
       }
     } catch (error) {
       console.error('API call failed:', error.message);

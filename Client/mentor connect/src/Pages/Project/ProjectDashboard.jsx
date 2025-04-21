@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route, Link, useParams, NavLink} from 'react-router-dom';
 import Dashboard from './Components/Dashboard';
 import Messages from './Components/Messages';
@@ -11,8 +11,39 @@ import ProjectOverview from './Components/ProjectOverview';
 import {useNavigate} from 'react-router-dom';
 import Base from './Components/Base';
 
+
 const ProjectDashboard = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
+    const projectid =id;
+    const [project, setproject] = useState({Owner: false})
+
+    const fetchapi = async () => {
+        console.log("test");
+            try {
+              let response = await fetch(`http://localhost:3000/api/getpostdatabyid`, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ _id: projectid}),
+                credentials: "include",
+              });
+              if (!response.ok) {
+                navigate('/unauthorized'); // Redirect to login if not authenticated
+              }
+              let data = await response.json();
+              console.log(data);
+              setproject(data);
+              
+            } catch (err) {
+              console.log(err);
+            }
+          };
+        
+          useEffect(() => {
+            fetchapi();
+          }, []);
     const navLinkClass = (isActive) =>
         `navitem block w-full my-4 ml-2 p-4 rounded-full transition-all duration-200 ${
             isActive ? 'button-accent' : 'text-gray-500 hover:bg-gray-100'
@@ -44,15 +75,20 @@ const ProjectDashboard = () => {
                     </NavLink>
 
                     
-
+                    {project.Owner && (
                     <NavLink to={`/project/${id}/team`} className={({ isActive }) => navLinkClass(isActive)}>
                         Team
                     </NavLink>
+                    )}
 
                     <NavLink to={`/project/${id}/messages`} className={({ isActive }) => navLinkClass(isActive)}>
                         Messages
                     </NavLink>
-
+                    {
+                        //if project.Owner is true then show Add Task
+                    }
+                    
+                    
                     <NavLink to={`/project/${id}/addtask`} className={({ isActive }) => navLinkClass(isActive)}>
                         Add Task
                     </NavLink>
@@ -69,7 +105,7 @@ const ProjectDashboard = () => {
                     <Route path="/addtask" element={<MyTask id={id} />} />
                     <Route path="/team" element={<Team id={id} />} />
                     <Route path="/taskboard" element={<Taskboard id={id} />} />
-                    <Route path="/task/:id/*" element={<TaskDetails id={id} />} />
+                    <Route path="/task/:id/*" element={<TaskDetails proid={id} />} />
                 </Routes>
             </div>
         </div>

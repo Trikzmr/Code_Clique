@@ -10,6 +10,7 @@ import Register from '../Pages/Authentication/Register';
 import AddProject from '../Pages/Home/Components/AddProject';
 import CompleteProfile from '../Pages/Profile/Components/CompleteProfile';
 import Profiled from '../Pages/Profile/Profiled';
+import Unauthorized from '../Pages/Screens/Unauthorized';
 
 
 const Router = () => {
@@ -26,6 +27,7 @@ const Router = () => {
                 <Route path="/addproject" element= {<AddProject/>}/>
                 <Route path="/completeprofile" element={<CompleteProfile/>}/>
                 <Route path="/profiled" element={<Profiled/>}/>
+                <Route path='/unauthorized' element={<Unauthorized/>}/>
             </Routes>
         </BrowserRouter>
     );

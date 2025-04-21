@@ -74,8 +74,9 @@ const User = new mongoose.Schema({
         default: Date.now,
      },
 
-
-   
+     views:{
+        type: [String]
+     }
 })
 
 const user = new mongoose.model("User", User)

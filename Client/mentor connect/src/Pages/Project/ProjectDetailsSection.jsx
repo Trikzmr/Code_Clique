@@ -18,9 +18,11 @@ const ProjectDetailsSection = () => {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({ _id: projectid}),
+            credentials:"include",
           });
           let data = await response.json();
           setProjectData(data);
+          addviewer(data.Category)
           console.log(data);
           
         } catch (err) {
@@ -28,6 +30,22 @@ const ProjectDetailsSection = () => {
         }
       };
     
+      const addviewer = async (category) => {
+        try {
+          let response = await fetch(`http://localhost:3000/api/ViewAdder`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({category: category}),
+            credentials:"include",
+          });
+          let data = await response.json();
+          console.log(data);
+        } catch (err) {
+          console.log(err);
+        }
+      }
       useEffect(() => {
         fetchapi();
       }, []);
