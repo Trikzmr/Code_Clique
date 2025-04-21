@@ -8,7 +8,7 @@ export default function Taskboard({ id }) {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/FindTaskByProjectId", {
+        const res = await fetch("https://code-clique-9qgm.vercel.app/api/FindTaskByProjectId", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ ProjectId: id }),
@@ -26,7 +26,7 @@ export default function Taskboard({ id }) {
 
   const getmyTask = async () => {
     try{
-      const api = "http://localhost:3000/api/getmytask";
+      const api = "https://code-clique-9qgm.vercel.app/api/getmytask";
       const container = {
         method: "POST",
         headers: {
@@ -45,7 +45,7 @@ export default function Taskboard({ id }) {
   }
   const fetchalltask = async() => {
     try {
-      const res = await fetch("http://localhost:3000/api/FindTaskByProjectId", {
+      const res = await fetch("https://code-clique-9qgm.vercel.app/api/FindTaskByProjectId", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ProjectId: id }),

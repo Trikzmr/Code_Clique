@@ -14,7 +14,7 @@ const UpdateTask = ({ id }) => {
   // Fetch task details from backend
   const getProjectDetails = async () => {
     try {
-      const res = await fetch('http://localhost:3000/api/FindTaskByTaskId', {
+      const res = await fetch('https://code-clique-9qgm.vercel.app/api/FindTaskByTaskId', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

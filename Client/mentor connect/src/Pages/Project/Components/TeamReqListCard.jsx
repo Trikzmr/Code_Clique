@@ -63,7 +63,7 @@ const TeamReqListCard = (props) => {
     let post = {
       _id: data._id,
     }
-    let api = "http://localhost:3000/api/deleteRequest";
+    let api = "https://code-clique-9qgm.vercel.app/api/deleteRequest";
     let container = {
       method: "POST",
       headers: {

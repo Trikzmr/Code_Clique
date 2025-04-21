@@ -16,7 +16,7 @@ const TaskList = () => {
             body: JSON.stringify({ ProjectId: projectid }),
         }
         try {
-            const res = await fetch('http://localhost:3000/api/FindTaskByProjectId', container);
+            const res = await fetch('https://code-clique-9qgm.vercel.app/api/FindTaskByProjectId', container);
             const data = await res.json();
             setTaskList(data);
         } catch (error) {

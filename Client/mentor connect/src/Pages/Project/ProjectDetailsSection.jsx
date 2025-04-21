@@ -12,7 +12,7 @@ const ProjectDetailsSection = () => {
     
       const fetchapi = async () => {
         try {
-          let response = await fetch(`http://localhost:3000/api/getpostdatabyid`, {
+          let response = await fetch(`https://code-clique-9qgm.vercel.app/api/getpostdatabyid`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -32,7 +32,7 @@ const ProjectDetailsSection = () => {
     
       const addviewer = async (category) => {
         try {
-          let response = await fetch(`http://localhost:3000/api/ViewAdder`, {
+          let response = await fetch(`https://code-clique-9qgm.vercel.app/api/ViewAdder`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

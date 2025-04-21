@@ -43,7 +43,7 @@ const AddProject = () => {
       };
 
       try {
-        const response = await fetch("http://localhost:3000/api/AddProject", {
+        const response = await fetch("https://code-clique-9qgm.vercel.app/api/AddProject", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

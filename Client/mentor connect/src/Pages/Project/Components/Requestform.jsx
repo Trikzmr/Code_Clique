@@ -17,7 +17,7 @@ const RequestForm = () => {
 
   const senddata = async() =>{
     try{
-      const res = fetch('http://localhost:3000/api/sendRequest', 
+      const res = fetch('https://code-clique-9qgm.vercel.app/api/sendRequest', 
         {
           method: "POST",
           headers: {

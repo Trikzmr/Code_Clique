@@ -12,7 +12,7 @@ const TaskAdditionalDetailsCard = ({ task }) => {
   const updateTaskStatus = async (newStatus) => {
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:3000/api/changetaskstatus", {
+      const response = await fetch("https://code-clique-9qgm.vercel.app/api/changetaskstatus", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ _id: task._id, status: newStatus }),
