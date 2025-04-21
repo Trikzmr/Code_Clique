@@ -12,7 +12,7 @@ const LoginArea = () => {
   const apifetch = async() => {
 
     try {
-      const response = await fetch('http://localhost:3000/api/LoginUser', {
+      const response = await fetch('https://code-clique-9qgm.vercel.app/api/LoginUser', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
