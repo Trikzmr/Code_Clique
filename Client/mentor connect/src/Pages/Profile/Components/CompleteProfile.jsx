@@ -21,7 +21,7 @@ const CompleteProfile = () => {
 
   const handleRegister = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/UpdateUser", {
+      const response = await fetch("https://code-clique-9qgm.vercel.app/api/UpdateUser", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -12,7 +12,7 @@ const Profiled = () => {
 
     useEffect( ()=>{
         const fetchdata = async()=>{
-            const apiUrl = "http://localhost:3000/api/userdetails";
+            const apiUrl = "https://code-clique-9qgm.vercel.app/api/userdetails";
             const container = {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },

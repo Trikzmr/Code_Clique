@@ -11,7 +11,7 @@ const MyProjectSection = () => {
   // Fetch project data from API
   const fetchProject = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/getmyproject', {
+      const response = await fetch('https://code-clique-9qgm.vercel.app/api/getmyproject', {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include', // for cookies / sessions

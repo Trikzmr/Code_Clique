@@ -18,7 +18,7 @@ const Requestform = () => {
   };
        async function senduserdb (formData){
             try {
-                const response=await fetch("http://localhost:3000/api/Addrequest",{
+                const response=await fetch("https://code-clique-9qgm.vercel.app/api/Addrequest",{
                    method:"POST",
                    headers:{"Content-Type":"application/json"},
                    body:JSON.stringify(formData),

@@ -42,7 +42,7 @@ const TaskCard = (props) => {
   const assignMembers = async() => {
 
     try {
-      const api = 'http://localhost:3000/api/AssignMembers';
+      const api = 'https://code-clique-9qgm.vercel.app/api/AssignMembers';
       const container = {
         method: 'POST',
         headers: {

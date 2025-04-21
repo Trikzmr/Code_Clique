@@ -70,7 +70,7 @@ const CreateTaskForm = () => {
             credentials: "include",
         }
         try{
-            const res = await fetch('http://localhost:3000/api/getpostdatabyid', container);
+            const res = await fetch('https://code-clique-9qgm.vercel.app/api/getpostdatabyid', container);
             const data = await res.json();
             request.ProjectOwner = data.username;
         }
@@ -85,7 +85,7 @@ const CreateTaskForm = () => {
   
     const senddata = async() =>{
       try{
-        const res = await fetch('http://localhost:3000/api/AddTask', 
+        const res = await fetch('https://code-clique-9qgm.vercel.app/api/AddTask', 
           {
             method: "POST",
             headers: {

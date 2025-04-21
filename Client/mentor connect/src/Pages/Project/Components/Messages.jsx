@@ -10,7 +10,7 @@ const Messages = ({id}) => {
     const getmyusername = async () => {
         
         try{
-          const api = "http://localhost:3000/api/messageapi";
+          const api = "https://code-clique-9qgm.vercel.app/api/messageapi";
           const container = {
             method: "POST",
             headers: {
@@ -30,7 +30,7 @@ const Messages = ({id}) => {
 
     useEffect(() => {
         // Create a new socket connection inside useEffect
-        const socket = io("http://localhost:3000", { transports: ["websocket"] });
+        const socket = io("https://code-clique-9qgm.vercel.app/", { transports: ["websocket"] });
 
 
         // Join a specific project chat room
@@ -62,7 +62,7 @@ const Messages = ({id}) => {
     const sendMessage = () => {
         if (message.trim() !== "") {
             // Reconnect the socket before sending a message
-            const socket = io("http://localhost:3000", { transports: ["websocket"] });
+            const socket = io("https://code-clique-9qgm.vercel.app/", { transports: ["websocket"] });
             socket.emit("sendMessage", { sender: username, message, roomId });
             setMessage("");
         }
