@@ -11,7 +11,7 @@ const CreateTaskForm = () => {
     
     useEffect(()=>{
         const fetchprojectdata = async() =>{
-            const api = "http://localhost:3000/api/getpostdatabyid";
+            const api = "https://code-clique-9qgm.vercel.app/api/getpostdatabyid";
             const container = {
                 method: "POST",
                 headers: {

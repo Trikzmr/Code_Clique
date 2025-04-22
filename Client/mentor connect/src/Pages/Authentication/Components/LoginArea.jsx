@@ -124,7 +124,7 @@ const LoginArea = () => {
 
       {/* Sign Up Link */}
       <p className="text-sm text-center text-gray-600 mt-6">
-        Don’t have an account? <a href="#" className="text-green-600 hover:underline">Sign Up</a>
+        Don’t have an account? <a href="/signup" className="text-green-600 hover:underline">Sign Up</a>
       </p>
     </div>
   );

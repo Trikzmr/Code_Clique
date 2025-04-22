@@ -15,7 +15,7 @@ const TaskDetails = ({proid}) => {
     });
 
     const fetchprojectdata = async() =>{
-        const api = "https://code-clique-9qgm.vercel.app/FindTaskByTaskId";
+        const api = "https://code-clique-9qgm.vercel.app/api/FindTaskByTaskId";
         const container = {
             method: "POST",
             headers: {
