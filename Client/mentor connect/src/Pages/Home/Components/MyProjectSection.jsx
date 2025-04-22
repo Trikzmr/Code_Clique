@@ -65,7 +65,7 @@ const MyProjectSection = () => {
       </div>
 
       {/* Render current page projects */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-4 md:px-0 mx-auto">
         {currentPage.map((project, idx) => (
           <MyComponent key={idx} data={project} />
         ))}
@@ -78,9 +78,7 @@ const MyProjectSection = () => {
           disabled={index === 1}
           className={`px-4 py-2 bg-black text-white rounded-full transition 
   border-2 border-transparent 
-  hover:bg-white hover:text-gray-800 hover:border-black transition ${
-            index === 1 ? 'opacity-50 cursor-not-allowed' : ''
-          }`}
+  hover:bg-white hover:text-gray-800 hover:border-black transition ${index === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
         >
           Prev
         </button>
@@ -90,11 +88,7 @@ const MyProjectSection = () => {
           disabled={index >= Math.ceil(myProjects.length / 3)}
           className={`px-4 py-2 bg-black text-white rounded-full transition 
   border-2 border-transparent 
-  hover:bg-white hover:text-gray-800 hover:border-black transition ${
-            index >= Math.ceil(myProjects.length / 3)
-              ? 'opacity-50 cursor-not-allowed'
-              : ''
-          }`}
+  hover:bg-white hover:text-gray-800 hover:border-black transition ${index >= Math.ceil(myProjects.length / 3) ? 'opacity-50 cursor-not-allowed' : ''}`}
         >
           Next
         </button>
