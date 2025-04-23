@@ -113,15 +113,7 @@ const LoginArea = () => {
       </div>
 
       {/* Other Login Options */}
-      <div className="loginOther space-y-4">
-        <button className="w-full flex items-center justify-center border border-gray-300 rounded-lg py-2 text-sm font-medium hover:bg-gray-100 transition">
-          <FcGoogle className="mr-2 text-lg" /> Sign in with Google
-        </button>
-        <button className="w-full flex items-center justify-center border border-gray-300 rounded-lg py-2 text-sm font-medium hover:bg-gray-100 transition">
-          <FaApple className="mr-2 text-lg" /> Sign in with Apple
-        </button>
-      </div>
-
+      
       {/* Sign Up Link */}
       <p className="text-sm text-center text-gray-600 mt-6">
         Don’t have an account? <a href="/signup" className="text-green-600 hover:underline">Sign Up</a>

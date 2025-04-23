@@ -71,10 +71,13 @@ const ExploreProject = () => {
         }
       );
         const user = await userres.json();
-           
+        //remove project which have username === user.username
+        
 
         const data = await response.json();
-        let adata=sortbyuser(data, user)
+        const ddata = data.filter((proj) => proj.username !== user.Username);
+        let adata=sortbyuser(ddata, user)
+        console.log(user);
 
         if (response.ok) {
           setProjects(adata);

@@ -43,10 +43,9 @@ const RequestForm = () => {
   };
 
   return (
-    <div className="w-[100%] flex items-center justify-center bg-white text-black">
-      <form className="w-full border border-black rounded-2xl p-6 space-y-4">
+    <div className="overflow-hidden rounded-2xl min-w-full border border-gray-200 bg-white px-4 pb-3 pt-4 sm:px-6 ">
+      <form className="w-full rounded-2xl p-6 space-y-4">
         <h1 className="text-2xl font-semibold text-center">Join Project</h1>
-
         <div className="space-y-2">
           <label htmlFor="publicProfileLink" className="block text-sm font-medium">Public Profile Link</label>
           <input
@@ -97,7 +96,7 @@ const RequestForm = () => {
               e.preventDefault();
               sendRequest("Developer");
             }}
-            className="flex-1 border border-black px-4 py-2 rounded-md hover:bg-black hover:text-white transition"
+            className="flex-1 border-2 border-black px-4 py-2 rounded-md hover:bg-black hover:text-white transition"
           >
             Join as Developer
           </button>

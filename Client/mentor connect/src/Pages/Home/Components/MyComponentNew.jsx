@@ -58,7 +58,7 @@ const MyComponentNew = (props) => {
   return (
     <div
       onClick={gotodetails}
-      className="p-4 rounded-xl shadow-md cursor-pointer w-[90%] mx-auto"
+      className="p-4 rounded-xl shadow-md cursor-pointer md:w-[90%] w-[100%] mx-auto"
       style={{ backgroundColor: bgColor }}
     >
       <div className="flex justify-between items-center text-sm mb-2">
