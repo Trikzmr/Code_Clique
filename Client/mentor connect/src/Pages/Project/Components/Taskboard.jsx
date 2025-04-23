@@ -2,8 +2,19 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ListMembers from "../../ProjectManagement/components/ecommerce/ListMembers";
 
+const SkeletonCard =()=> {
+  return (
+    <div className="animate-pulse space-y-4 p-4 rounded-xl bg-gray-200 h-40">
+      <div className="h-4 bg-gray-300 rounded w-3/4"></div>
+      <div className="h-4 bg-gray-300 rounded w-full"></div>
+      <div className="h-4 bg-gray-300 rounded w-1/2"></div>
+    </div>
+  );
+}
+
 export default function Taskboard({ id }) {
   const [tasks, setTasks] = useState([{Members:[]}]);
+  const [loading, setloading] = useState(true);
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -16,6 +27,7 @@ export default function Taskboard({ id }) {
         const data = await res.json();
         console.log("Fetched tasks:", data);
         setTasks(data);
+        setloading(false);
       } catch (error) {
         console.error("Error fetching tasks:", error);
       }
@@ -98,6 +110,7 @@ function KanbanColumn({ title, tasks, bgColor, id}) {
     <div className="w-1/3 p-4 bg-white rounded-2xl border border-gray-200 shadow-md max-h-full overflow-y-auto">
       <h3 className="text-lg font-semibold">{title}</h3>
       <div className="mt-2 space-y-4">
+        {tasks.length === 0 && <SkeletonCard />}
         {tasks.length > 0 ? (
           tasks.map((task) => <KanbanCard key={task.id} task={task} bgColor={bgColor} id={id}/>)
         ) : (

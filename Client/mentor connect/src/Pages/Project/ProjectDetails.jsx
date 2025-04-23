@@ -19,9 +19,7 @@ const ProjectDetails = () => {
 
         {/* Right Section */}
         <div className="md:w-1/3 flex justify-center items-center ">
-          <div className="JoinProjectSection">
-            <RequestForm/>
-          </div>
+          <RequestForm/>
         </div>
       </div>
     </div>
