@@ -3,6 +3,14 @@ import ProjectComponent from "./ProjectComponent";
 import {sortbyuser} from "./Sortalgo"
 import ProjectComponentNew from "./ProjectComponentNew";
 
+const SkeletonCard = () => (
+  <div className="animate-pulse bg-white rounded-xl p-4 shadow-md w-full h-48 flex flex-col justify-between">
+    <div className="h-4 bg-gray-300 rounded w-3/4 mb-2"></div>
+    <div className="h-4 bg-gray-300 rounded w-1/2 mb-2"></div>
+    <div className="h-4 bg-gray-300 rounded w-5/6"></div>
+  </div>
+);
+
 const ExploreProject = () => {
   const [projects, setProjects] = useState([]);
   const [filteredProjects, setFilteredProjects] = useState([]);
@@ -128,8 +136,12 @@ const ExploreProject = () => {
 
       {/* Loading Spinner */}
       {loading ? (
-        <div className="text-center text-gray-600 text-lg">Loading...</div>
-      ) : filteredProjects.length === 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {[...Array(projectsPerPage)].map((_, i) => (
+          <SkeletonCard key={i} />
+        ))}
+      </div>
+) : filteredProjects.length === 0 ? (
         <div className="text-center text-gray-600 text-lg">Sorry, no projects found.</div>
       ) : (
         <>

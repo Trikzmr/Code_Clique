@@ -13,12 +13,12 @@ const ProjectDetails = () => {
       {/* Parent flex container */}
       <div className="flex flex-col md:flex-row gap-4">
         {/* Left Section */}
-        <div className="md:w-2/3 flex justify-center items-center p-5 rounded-lg">
+        <div className="md:w-2/3 flex justify-center items-center ">
           <ProjectDetailsSection/>
         </div>
 
         {/* Right Section */}
-        <div className="md:w-1/3 flex justify-center items-center p-5 rounded-lg">
+        <div className="md:w-1/3 flex justify-center items-center ">
           <div className="JoinProjectSection">
             <RequestForm/>
           </div>

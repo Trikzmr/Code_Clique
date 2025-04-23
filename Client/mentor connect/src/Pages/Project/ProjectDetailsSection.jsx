@@ -5,14 +5,14 @@ import { useParams } from 'react-router-dom';
 const ProjectDetailsSection = () => {
 
     let projectid = useParams().id;
-
+    console.log(projectid);
     const [projectData, setProjectData] = useState({});
 
     let keySkills = projectData.Keyskills || [];
     
       const fetchapi = async () => {
         try {
-          let response = await fetch(`https://code-clique-9qgm.vercel.app/api/getpostdatabyid`, {
+          let response = await fetch(`https://code-clique-9qgm.vercel.app/api/postpreviewbyid`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
