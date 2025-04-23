@@ -33,6 +33,7 @@ const updatetask = require("./routes/UpdateTask");
 const updateUser = require("./routes/UpdateUser");
 const userDetails = require("./routes/UserDetail");
 const ViewAdder = require("./routes/ViewAdder");
+const postPreviewbyid = require("./routes/postpreviewbyid")
 
 // Initialize Express app
 const app = express();
@@ -84,6 +85,7 @@ app.use('/api', updatetask);
 app.use('/api', updateUser);
 app.use('/api', userDetails);
 app.use('/api', ViewAdder);
+app.use('/api', postPreviewbyid);
 
 // Start the server with socket.io
 server.listen(port, "0.0.0.0", () => {

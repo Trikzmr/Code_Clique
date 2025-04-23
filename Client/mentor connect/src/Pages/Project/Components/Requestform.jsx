@@ -2,105 +2,104 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 
 const RequestForm = () => {
+  const { id: projectid } = useParams();
 
-  let projectid = useParams().id;
-  console.log(projectid);
-
-  let request = {
-    projectId: "",
-    skills: "",
+  const [form, setForm] = useState({
     message: "",
     publicProfileLink: "",
     projectLink: "",
-    role: "",
-  }
+    skills: "",
+  });
 
-  const senddata = async() =>{
-    try{
-      const res = fetch('https://code-clique-9qgm.vercel.app/api/sendRequest', 
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(request),
-          credentials: "include",
-        }
-      )
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setForm((prev) => ({ ...prev, [id]: value }));
+  };
+
+  const sendRequest = async (role) => {
+    const payload = {
+      projectId: projectid,
+      role,
+      message: form.message,
+      publicProfileLink: form.publicProfileLink,
+      projectLink: form.projectLink,
+      skills: form.skills.split(",").map((s) => s.trim()),
+    };
+
+    try {
+      const res = await fetch("https://code-clique-9qgm.vercel.app/api/sendRequest", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+        credentials: "include",
+      });
       const data = await res.json();
       console.log(data);
+    } catch (err) {
+      console.error(err);
     }
-    catch(err){
-      console.log(err);
-    }
-  }
-  const getforminputs = () => {
-    request.message = document.getElementById("message").value;
-    request.profile = document.getElementById("profile").value;
-    request.publicProfileLink = document.getElementById("profile").value;
-    request.projectLink = document.getElementById("project").value;
-    request.projectId = projectid;
-    const skillArray = document.getElementById("skills").value.split(",");
-    request.skills = skillArray;
-  }
+  };
 
-  const Devjoin =(e) => {
-    e.preventDefault();
-    getforminputs();
-    request.role = "Developer";
-    senddata();
-  }
-  const Mentorjoin =(e) => {
-    e.preventDefault();
-    getforminputs();
-    request.role = "Mentor";
-    senddata();
-  }
   return (
-    <div className="max-w-lg mx-auto p-6 rounded-2xl border border-gray-200 bg-white">
-      <h1 className="text-3xl font-bold text-gray-800  mb-6">
-        Join Project
-      </h1>
+    <div className="w-[100%] flex items-center justify-center bg-white text-black">
+      <form className="w-full border border-black rounded-2xl p-6 space-y-4">
+        <h1 className="text-2xl font-semibold text-center">Join Project</h1>
 
-      <form className="space-y-4">
-        {/* Skills Input */}
-        <input
-          type="text"
-          id="skills"
-          placeholder="Skills separated by commas"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
+        <div className="space-y-2">
+          <label htmlFor="publicProfileLink" className="block text-sm font-medium">Public Profile Link</label>
+          <input
+            id="publicProfileLink"
+            type="url"
+            className="w-full border border-black rounded-md px-3 py-2 bg-white focus:outline-none"
+            value={form.publicProfileLink}
+            onChange={handleChange}
+          />
+        </div>
 
-        {/* Message Input */}
-        <textarea
-          id="message"
-          rows="8"
-          placeholder="Write a message to the project owner"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        ></textarea>
+        <div className="space-y-2">
+          <label htmlFor="projectLink" className="block text-sm font-medium">Project Link (if any)</label>
+          <input
+            id="projectLink"
+            type="url"
+            className="w-full border border-black rounded-md px-3 py-2 bg-white focus:outline-none"
+            value={form.projectLink}
+            onChange={handleChange}
+          />
+        </div>
 
-        {/* Profile Links */}
-        <input
-          type="text"
-          id="profile"
-          placeholder="LinkedIn or GitHub Profile Link"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
+        <div className="space-y-2">
+          <label htmlFor="skills" className="block text-sm font-medium">Skills (comma separated)</label>
+          <input
+            id="skills"
+            type="text"
+            className="w-full border border-black rounded-md px-3 py-2 bg-white focus:outline-none"
+            value={form.skills}
+            onChange={handleChange}
+          />
+        </div>
 
-        <input
-          type="text"
-          id="project"
-          placeholder="Portfolio Link"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
+        <div className="space-y-2">
+          <label htmlFor="message" className="block text-sm font-medium">Message</label>
+          <textarea
+            id="message"
+            rows="4"
+            className="w-full border border-black rounded-md px-3 py-2 bg-white focus:outline-none"
+            value={form.message}
+            onChange={handleChange}
+          />
+        </div>
 
-        {/* Buttons */}
-        <div className="flex justify-center space-x-4">
-          <button className="py-2 px-6 rounded-full button-accent" onClick={Devjoin}>
+        <div className="flex gap-4 pt-2">
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              sendRequest("Developer");
+            }}
+            className="flex-1 border border-black px-4 py-2 rounded-md hover:bg-black hover:text-white transition"
+          >
             Join as Developer
-          </button>
-          <button className="py-2 px-6 rounded-full button-accent" onClick={Mentorjoin}>
-            Join as Mentor
           </button>
         </div>
       </form>
