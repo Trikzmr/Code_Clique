@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import MyComponent from './MyComponent'; // assuming this renders a single project
+//import MyComponent from './MyComponent'; // assuming this renders a single project
 import { useNavigate } from 'react-router-dom';
+import MyComponentNew from './MyComponentNew';
 
 const MyProjectSection = () => {
   const [myProjects, setMyProjects] = useState([]);
   const [index, setIndex] = useState(1);
   const [currentPage, setCurrentPage] = useState([]);
   const navigate = useNavigate();
+  const color =[
+    {bgcolor: '#FEF3C7', prgclr: '#F59E0B'},
+    {bgcolor: '#E0F2FE', prgclr: '#3B82F6'},
+    {bgcolor: 'pink', prgclr: '#FF6F61'},
+  ]
 
   // Fetch project data from API
   const fetchProject = async () => {
@@ -59,7 +65,7 @@ const MyProjectSection = () => {
   };
 
   return (
-    <div className="mb-16">
+    <div className="mb-16 p-4">
       <div className="mb-8">
         <h2 className="text-2xl font-bold">My Projects</h2>
       </div>
@@ -67,7 +73,7 @@ const MyProjectSection = () => {
       {/* Render current page projects */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-4 md:px-0 mx-auto">
         {currentPage.map((project, idx) => (
-          <MyComponent key={idx} data={project} />
+          <MyComponentNew key={idx} data={project} color={color[idx%3]}/>
         ))}
       </div>
 

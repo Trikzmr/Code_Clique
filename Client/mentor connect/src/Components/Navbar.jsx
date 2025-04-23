@@ -25,10 +25,10 @@ const Navbar = () => {
       </div>
       <div className={`md:hidden transition-all duration-300 ease-in-out ${isOpen ? 'block' : 'hidden'}`}>
         <div className="px-2 pt-2 pb-3 space-y-1">
-          <a href="#" className="block text-gray-700 hover:text-blue-600 font-medium">Dashboard</a>
-          <a href="#" className="block text-gray-700 hover:text-blue-600 font-medium">Team</a>
-          <a href="#" className="block text-gray-700 hover:text-blue-600 font-medium">Projects</a>
-          <a href="#" className="block text-gray-700 hover:text-blue-600 font-medium">Calendar</a>
+          <a href="#" className="block text-gray-700 hover:text-blue-600 font-medium">About Us</a>
+          <a href="/" className="block text-gray-700 hover:text-blue-600 font-medium">Home</a>
+          <a href="/profile" className="block text-gray-700 hover:text-blue-600 font-medium">Profile</a>
+          <a href="/login" className="block text-gray-700 hover:text-blue-600 font-medium">Login</a>
         </div>
       </div>
     </nav>
