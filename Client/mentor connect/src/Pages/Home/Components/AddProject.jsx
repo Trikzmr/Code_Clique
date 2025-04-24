@@ -60,19 +60,19 @@ const AddProject = () => {
 
   return (
     <div className="AddProjectPage flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="addprojectpageleft w-13/20 p-12 max-h-screen overflow-y-scroll ">
+      <div className="addprojectpageleft w-full md:w-13/20 p-2 md:p-12 max-h-screen overflow-y-scroll ">
         <div className="max-w-4xl mx-auto p-6 bg-white rounded-3xl border border-gray-200">
           <h2 className="text-2xl font-semibold text-gray-700 mb-6">Post Your Ideas</h2>
           <form className="gap-4" onSubmit={handleSubmit}>
             <div className="mb-4">
               <label className="block text-gray-600 mb-2">Title</label>
-              <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" className="w-7/10 p-2 border rounded-md mb-2" />
+              <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" className="w-full md:w-7/10 p-2 border rounded-md mb-2" />
               {errors.title && <p className="text-red-500 text-sm">{errors.title}</p>}
             </div>
 
             <div className="mb-4 block text-gray-600">
               <label htmlFor="message" className="mb-2">Enter Description</label><br/>
-              <textarea id="message" name="message" rows="4" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Enter the description" className="w-7/10 p-2 border rounded-md mb-2 mt-2"></textarea>
+              <textarea id="message" name="message" rows="4" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Enter the description" className="w-full md:w-7/10 p-2 border rounded-md mb-2 mt-2"></textarea>
               {errors.description && <p className="text-red-500 text-sm">{errors.description}</p>}
             </div>
 
@@ -85,10 +85,10 @@ const AddProject = () => {
                   value={point}
                   onChange={(e) => handleKeyPointChange(index, e.target.value)}
                   placeholder={`Key Point ${index + 1}`}
-                  className="w-7/10 p-2 border rounded-md mt-2 mb-2"
+                  className="w-full md:w-7/10 p-2 border rounded-md mt-2 mb-2"
                 />
               ))}<br/>
-              <button onClick={addKeyPointField} type="button" className="mt-2 mb-2 w-2/10 bg-purple-600 text-white p-2 rounded-md hover:bg-purple-700 transition">Add More</button>
+              <button onClick={addKeyPointField} type="button" className="mt-2 mb-2 w-7/10 md:w-2/10 bg-purple-600 text-white p-2 rounded-md hover:bg-purple-700 transition">Add More</button>
               {errors.keyPoints && <p className="text-red-500 text-sm">{errors.keyPoints}</p>}
             </div>
 
@@ -99,7 +99,7 @@ const AddProject = () => {
             </div>
             <div>
               <label className="block text-gray-600 mb-2">Category</label>
-              <select value={category} onChange={(e) => setCategory(e.target.value)} className="w-7/10 p-2 border rounded-md mb-2">
+              <select value={category} onChange={(e) => setCategory(e.target.value)} className="w-full md:w-7/10 p-2 border rounded-md mb-2">
                 <option value="">Choose...</option>
                 <option>Web Development</option>
                 <option>App Development</option>
@@ -117,12 +117,14 @@ const AddProject = () => {
               {errors.category && <p className="text-red-500 text-sm">{errors.category}</p>}
             </div>
             <div className="mb- 4 mt-6">
-              <button type="submit" className="w-3/10 bg-purple-600 text-white p-2 rounded-md hover:bg-purple-700 transition">Add Project</button>
+              <button type="submit" className="w-full md:w-3/10 bg-purple-600 text-white p-2 rounded-md hover:bg-purple-700 transition">Add Project</button>
             </div>
           </form>
         </div>
       </div>
-      <div className="addprojectpageright w-7/20 min-h-screen">
+      {//hide this div in mobile view
+      }
+      <div className="addprojectpageright hidden md:flex justify-center items-center w-1/3 h-screen bg-gray-200 rounded-3xl border border-gray-200">
               
       </div>
       
