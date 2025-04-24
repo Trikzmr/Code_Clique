@@ -55,12 +55,13 @@ const ProjectDetailsSection = () => {
     fetchapi();
   }, []);
   return (
-    <div className="md:flex gap-6">
-      <div className="tasksummary md:w-12/12 max-h-screen overflow-y-scroll">
-        <div className="overflow-hidden rounded-2xl border min-w-4xl border-gray-200 bg-white px-4 pb-3 pt-4 sm:px-6 ">
+    <div className=" w-full">
+      <div className="tasksummary w-full max-h-screen overflow-y-auto">
+        <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white px-4 pb-4 pt-4 sm:px-6">
           <h2 className="text-lg font-semibold text-gray-700 border-l-4 border-blue-500 pl-2">
             Project Summary
           </h2>
+
           <h3 className="text-xl font-bold text-gray-900 mt-4">
             {loading ? (
               <div className="animate-pulse h-8 bg-gray-300 rounded w-1/3"></div>
@@ -69,44 +70,45 @@ const ProjectDetailsSection = () => {
             )}
           </h3>
 
-          <div className="skillsarea flex mt-4 gap-3">
+          <div className="skillsarea flex flex-wrap mt-4 gap-2">
             <h4 className="font-semibold text-gray-700 p-1.5">Key Skills :</h4>
             {keySkills &&
               keySkills.map((skill, index) => (
                 <div
                   key={index}
-                  className="text-gray-800 bg-gray-200 p-1.5 px-6 rounded-full text-sm font-semibold"
+                  className="text-gray-800 bg-gray-200 p-1.5 px-4 rounded-full text-sm font-semibold"
                 >
                   {skill}
                 </div>
               ))}
           </div>
-          <div className="mt-2">
+
+          <div className="mt-4">
             <h4 className="font-semibold text-gray-700">
               Project Description :
             </h4>
             <p className="text-gray-600 mt-1">
-            {loading ? (
-              <div className="animate-pulse h-64 bg-gray-300 rounded w-9/10"></div>
-            ) : (
-              projectData.Description
-            )}
+              {loading ? (
+                <div className="animate-pulse h-64 bg-gray-300 rounded w-full"></div>
+              ) : (
+                projectData.Description
+              )}
             </p>
           </div>
+
           <div className="mt-4 min-h-[300px]">
             <h4 className="font-semibold text-gray-700">Key Points :</h4>
-            <ul className="list-decimal list-inside text-gray-600 mt-1 space-y-1 px-8">
+            <ul className="list-decimal list-inside text-gray-600 mt-1 space-y-1 px-6">
               {projectData.Keypoints &&
                 projectData.Keypoints.map((point, index) => (
-                  <li key={index} className="text-gray-600">
-                    {point}
-                  </li>
+                  <li key={index}>{point}</li>
                 ))}
             </ul>
           </div>
+
           <hr className="border-gray-300 my-4" />
 
-          <div className="mt-6 grid grid-cols-2 gap-4 text-gray-700">
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-700">
             <div>
               <p className="text-sm font-semibold">Proposed By</p>
               <p className="text-blue-600 font-medium">

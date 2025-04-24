@@ -23,10 +23,10 @@ const Router = () => {
                 <Route path="/project/:id/*" element={<ProjectDashboard/>} />
                 <Route path="/project/details/:id" element={<ProjectDetails/>} />
                 <Route path="/requestform" element={<Requestform/>} />  
-                <Route path="/profile" element={<Profile/>} />  
+                <Route path="/profiled" element={<Profile/>} />  
                 <Route path="/addproject" element= {<AddProject/>}/>
                 <Route path="/completeprofile" element={<CompleteProfile/>}/>
-                <Route path="/profiled" element={<Profiled/>}/>
+                <Route path="/profile" element={<Profiled/>}/>
                 <Route path='/unauthorized' element={<Unauthorized/>}/>
             </Routes>
         </BrowserRouter>

@@ -4,7 +4,8 @@ import UserDetailsCard from './Components/UserDetailsCard';
 import ProfileDiscription from './Components/ProfileDiscription';
 import ProfileLinks from './Components/ProfileLinks';
 import Gitcal from './Components/Gitcal';
-//import Gitlanguage from './Components/gitlanguage';
+import CompleteProfilePrompt from './Components/CompleteProfilePrompt';
+import Gitlanguage from './Components/gitlanguage';
 
 const Profiled = () => {
     const [userDetail, setuserDetail] = useState({});
@@ -60,7 +61,12 @@ const Profiled = () => {
                             <Gitcal/>
                         </div>
                         <div className="gitlang">
-                            {/* <Gitlanguage/> */}
+                          <Gitlanguage/> 
+                        </div>
+                    </div>
+                    <div className="ProfileOthrs flex gap-4 mt-4">
+                        <div className="completeprofile min-w-11/11">
+                            <CompleteProfilePrompt/>
                         </div>
                     </div>
                     
