@@ -5,7 +5,7 @@ import ProfileDiscription from './Components/ProfileDiscription';
 import ProfileLinks from './Components/ProfileLinks';
 import Gitcal from './Components/Gitcal';
 import CompleteProfilePrompt from './Components/CompleteProfilePrompt';
-import Gitlanguage from './Components/gitlanguage';
+import Gitlanguage from './Components/Gitlanguage';
 
 const Profiled = () => {
     const [userDetail, setuserDetail] = useState({});
