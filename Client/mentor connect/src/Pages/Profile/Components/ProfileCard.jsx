@@ -10,7 +10,7 @@ import {
 
 const ProfileCard = ({data}) => {
   return (
-    <div className="bg-white rounded-2xl p-6 mb-2 w-full max-w-sm shadow-md mx-auto">
+    <div className="bg-white rounded-2xl p-6 mb-2 w-full md:max-w-sm shadow-md mx-auto">
       {/* Header */}
       <div className="flex justify-between items-start">
         <div className="flex items-center gap-4">

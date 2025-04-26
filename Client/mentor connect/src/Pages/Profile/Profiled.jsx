@@ -39,25 +39,25 @@ const Profiled = () => {
         fetchdata();
     }, [])
   return (
-    <div className='bg-[#E8F3EB] min-h-[100vh] flex items-center justify-center p-8 py-2'>
-        <div className="profilearea max-w-19/20 min-w-19/20 min-h-[100vh] p-6 py-2">
+    <div className='bg-[#E8F3EB] min-h-[100vh] flex items-center justify-center md:p-8 py-2'>
+        <div className="profilearea max-w-19/20 min-w-19/20 min-h-[100vh] md:p-6 py-2">
             <div className="profilerow flex flex-col md:flex-row gap-4 mt-2">
-                <div className="profilecard min-w-3/10 max-w-3/10">
+                <div className="profilecard w-full md:min-w-3/10 md:max-w-3/10">
                     <ProfileCard data={userDetail}/>
                     <UserDetailsCard data={userDetail}/>
                 </div>
                 <div className="rightprofile">
-                    <div className="Description min-w-7/10 flex gap-4">
-                        <div className="profiledis min-w-7/11 max-w-7/11">
+                    <div className="Description md:min-w-7/10 md:flex gap-4">
+                        <div className="profiledis my-4 md:my-0 md:min-w-7/11 md:max-w-7/11">
                             <ProfileDiscription data={userDetail}/>
                         </div>
-                        <div className="importantlinks w-4/11 max-w-4/11">
+                        <div className="importantlinks my-4 md:my-0 md:w-4/11 md:max-w-4/11">
                             <ProfileLinks data={links}/>
                         </div>
                         
                     </div>
-                    <div className="Description min-w-7/10 flex gap-4">
-                        <div className="gitcal min-w-7/11 max-w-7/11">
+                    <div className="Description min-w-7/10 md:flex gap-4">
+                        <div className="gitcal md:min-w-7/11 md:max-w-7/11">
                             <Gitcal/>
                         </div>
                         <div className="gitlang">

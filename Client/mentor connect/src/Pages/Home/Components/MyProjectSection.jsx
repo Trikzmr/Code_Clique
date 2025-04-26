@@ -4,7 +4,9 @@ import MyComponentNew from './MyComponentNew';
 
 const MyProjectSection = () => {
   const [myProjects, setMyProjects] = useState([]);
-  const [loading, setLoading] = useState(true); // <-- New loading state
+  const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const projectsPerPage = 3;
   const navigate = useNavigate();
 
   const color = [
@@ -15,7 +17,7 @@ const MyProjectSection = () => {
 
   const fetchProject = async () => {
     try {
-      setLoading(true); // Start loading
+      setLoading(true);
       const response = await fetch('https://code-clique-9qgm.vercel.app/api/getmyproject', {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
@@ -24,13 +26,14 @@ const MyProjectSection = () => {
 
       if (response.ok) {
         const projects = await response.json();
-        setLoading(false);
         setMyProjects(projects);
       } else {
         console.error('Failed to fetch projects');
       }
     } catch (error) {
       console.error('API call failed:', error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -38,21 +41,64 @@ const MyProjectSection = () => {
     fetchProject();
   }, []);
 
+  // Pagination logic
+  const indexOfLastProject = currentPage * projectsPerPage;
+  const indexOfFirstProject = indexOfLastProject - projectsPerPage;
+  const currentProjects = myProjects.slice(indexOfFirstProject, indexOfLastProject);
+  const totalPages = Math.ceil(myProjects.length / projectsPerPage);
+
+  const goToPage = (pageNumber) => {
+    if (pageNumber >= 1 && pageNumber <= totalPages) {
+      setCurrentPage(pageNumber);
+    }
+  };
+
   return (
     <div className="p-4">
+      <h1 className="text-2xl font-bold mb-4">Explore Projects</h1>
       {loading ? (
-        // Placeholder skeletons
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {[...Array(3)].map((_, i) => (
-            <div key={i} className="animate-pulse space-y-4 p-4 rounded-xl bg-gray-200 h-40" />
-          ))}
-        </div>
+        <div>Loading...</div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 gap-4">
-          {myProjects.map((project, i) => (
-            <MyComponentNew key={i} data={project} color={color[i % color.length]} />
-          ))}
-        </div>
+        <>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {currentProjects.map((project, index) => (
+              <MyComponentNew
+                key={project.id || index}
+                data={project}
+                color={color[index % color.length]}
+              />
+            ))}
+          </div>
+
+          {/* Pagination Controls */}
+          <div className="flex justify-center mt-6 space-x-2">
+            <button
+              onClick={() => goToPage(currentPage - 1)}
+              disabled={currentPage === 1}
+              className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
+            >
+              Prev
+            </button>
+            {[...Array(totalPages)].map((_, idx) => (
+              <button
+                key={idx + 1}
+                onClick={() => goToPage(idx + 1)}
+                className={`px-3 py-1 rounded ${
+                  currentPage === idx + 1 ? 'bg-blue-500 text-white' : 'bg-gray-200'
+                }`}
+              >
+                {idx + 1}
+              </button>
+            ))}
+            <button
+              onClick={() => goToPage(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
+            >
+              Next
+            </button>
+          </div>
+        </>
       )}
     </div>
   );
