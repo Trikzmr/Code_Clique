@@ -6,7 +6,7 @@ import { FaUser, FaTag, FaLaptopCode } from 'react-icons/fa';
 const MyComponentNew = (props) => {
   const {
     data: { Title, username, Description, Keyskills, _id, Category, createdAt },
-    color = {} // fallback in case color is undefined
+    color = {} 
   } = props;
 
   const navigate = useNavigate();
