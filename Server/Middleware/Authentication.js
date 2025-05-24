@@ -7,10 +7,11 @@ const express = require('express');
 const router = express.Router();
 
 const authenticate = async (req, res, next) => {
+    
     try {
         const token = req.cookies.token;
-        
         if (!token) {
+            console.log("Authentication middleware called");
             return res.status(401).json({ message: "Unauthorized 1" });
         }
         
