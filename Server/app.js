@@ -34,6 +34,7 @@ const updateUser = require("./routes/UpdateUser");
 const userDetails = require("./routes/UserDetail");
 const ViewAdder = require("./routes/ViewAdder");
 const postPreviewbyid = require("./routes/postpreviewbyid")
+const UploadProfilePic = require("./routes/UploadProfilePic")
 
 // Initialize Express app
 const app = express();
@@ -44,7 +45,7 @@ const server = http.createServer(app);
 
 // Middleware
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:5174", "https://code-clique-9qgm.vercel.app", "https://code-clique-2mtm.vercel.app"],
+  origin: ["http://localhost:5173", "http://localhost:5174", "https://code-clique-9qgm.vercel.app", "https://code-clique-2mtm.vercel.app", "http://localhost:5173"],
   credentials: true,
 }));
 app.use(express.json());
@@ -86,6 +87,7 @@ app.use('/api', updateUser);
 app.use('/api', userDetails);
 app.use('/api', ViewAdder);
 app.use('/api', postPreviewbyid);
+app.use('/api', UploadProfilePic);
 
 // Start the server with socket.io
 server.listen(port, "0.0.0.0", () => {
