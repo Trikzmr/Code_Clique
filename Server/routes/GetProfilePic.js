@@ -19,4 +19,4 @@ const apicall = async(req, res) =>{
 
 api.post('/getprofilepic', apicall);
 
-exports = moudule.exports = api;
+module.exports = api;
