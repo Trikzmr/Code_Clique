@@ -34,7 +34,7 @@ const ProfileCard = ({ data }) => {
 
       try {
 
-          const apiUrl = 'https://code-clique-9qgm.vercel/api/upload';
+          const apiUrl = 'https://code-clique-9qgm.vercel.app/api/upload';
 
           const formData = new FormData();
           formData.append('profilePic', selectedFile);
