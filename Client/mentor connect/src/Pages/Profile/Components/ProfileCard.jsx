@@ -12,6 +12,7 @@ import {
 
 
 const ProfileCard = ({ data }) => {
+  console.log("Data in ProfileCard:", data.profilePic);
   const [menuOpen, setMenuOpen] = useState(false);
   const [profilepic, setprofilepic]=useState(false);
 
@@ -121,7 +122,7 @@ const ProfileCard = ({ data }) => {
         <div className="flex items-center gap-4">
           <div className="rounded-full bg-gray-300 p-1">
             <img
-              src="/profile-placeholder.png"
+              src={data.profilePic}
               className="w-16 h-16 rounded-full object-cover"
             />
           </div>
