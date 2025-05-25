@@ -41,10 +41,11 @@ const ProfileCard = ({ data }) => {
 
           const response = await fetch(apiUrl, {
           method: 'POST',
-          body: formData,
-          headers: { 'Content-Type': 'application/json' }, 
+          body: formData, 
           credentials: 'include', // Allows cookies to be sent with the request
         });
+        const data = await response.json();
+        console.log("Response from server:", data);
         
       } catch (error) {
         console.error("Error uploading file:", error);  
