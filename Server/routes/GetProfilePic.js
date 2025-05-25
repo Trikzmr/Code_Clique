@@ -5,8 +5,8 @@ const api = express.Router();
 
 const apicall = async(req, res) =>{
     try {
-        const {Username} = req.body;
-        const image = await imageModel.findOne({Username});
+        const {username} = req.body;
+        const image = await imageModel.findOne({username});
         if (!image) {
             return res.status(404).json({ message: "Image not found" });
         }
