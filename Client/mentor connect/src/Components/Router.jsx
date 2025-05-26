@@ -11,6 +11,7 @@ import AddProject from '../Pages/Home/Components/AddProject';
 import CompleteProfile from '../Pages/Profile/Components/CompleteProfile';
 import Profiled from '../Pages/Profile/Profiled';
 import Unauthorized from '../Pages/Screens/Unauthorized';
+import Landing from '../Pages/Landing/Landing';
 
 
 const Router = () => {
@@ -19,7 +20,8 @@ const Router = () => {
             <Routes>
                 <Route path="/login" element={<Login/>} />
                 <Route path="/signup" element={<Register/>} />
-                <Route path="/" element={<Home/>} />
+                <Route path="/home" element={<Home/>} />
+                <Route path="/" element={<Landing/>} />
                 <Route path="/project/:id/*" element={<ProjectDashboard/>} />
                 <Route path="/project/details/:id" element={<ProjectDetails/>} />
                 <Route path="/requestform" element={<Requestform/>} />  
