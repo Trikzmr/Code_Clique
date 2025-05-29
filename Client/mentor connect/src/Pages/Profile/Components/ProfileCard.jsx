@@ -7,7 +7,7 @@ import {
   MoreVertical,
   Calendar,
 } from 'lucide-react';
-
+import imageCompression from "browser-image-compression";
 
 
 
@@ -20,12 +20,26 @@ const ProfileCard = ({ data }) => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [previewURL, setPreviewURL] = useState(null);
   
-    const handleFileChange = (e) => {
+    const handleFileChange = async(e) => {
       const file = e.target.files[0];
-      setSelectedFile(file);
       if (file) {
-        setPreviewURL(URL.createObjectURL(file));
+      // 1. Compress image
+      const options = {
+        maxSizeMB: 1,          // Max size in MB
+        maxWidthOrHeight: 800, // Resize image if too large
+        useWebWorker: true,
+      };
+
+      try {
+        const compressedFile = await imageCompression(file, options);
+
+        setSelectedFile(compressedFile);
+        setPreviewURL(URL.createObjectURL(compressedFile));
       }
+      catch (error) {
+        console.error("Error compressing image:", error);
+      }
+    }
     };
   
     const handleUpload = async(e) => {
@@ -181,6 +195,7 @@ const ProfileCard = ({ data }) => {
         </div>
     </div>
   );
+
 };
 
 export default ProfileCard;
