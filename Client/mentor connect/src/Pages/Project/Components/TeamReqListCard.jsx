@@ -13,7 +13,7 @@ const TeamReqListCard = (props) => {
   //console.log(data);
   const getuserdata = async () => {
     
-    let api = "http://localhost:3000/api/GetUser";
+    let api = "https://code-clique-9qgm.vercel.app/api/GetUser";
     let container = {
       method: "POST",
       headers: {

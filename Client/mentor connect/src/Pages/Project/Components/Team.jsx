@@ -46,7 +46,7 @@ const Team = (props) => {
 
   const fetchrequestlist = async() =>{
 
-    const api = "http://localhost:3000/api/byprojectid";
+    const api = "https://code-clique-9qgm.vercel.app/api/byprojectid";
     const container = {
       method: "POST",
       headers: {
