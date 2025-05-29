@@ -166,7 +166,7 @@ const TeamReqListCard = (props) => {
         <button className="px-6 py-2 rounded-full button-accent" onClick={handleAccept}>
           Accept
         </button>
-        <button className="px-6 py-2 rounded-full bg-red-500 text-white font-medium hover:bg-red-600 transition">
+        <button className="px-6 py-2 rounded-full bg-red-500 text-white font-medium hover:bg-red-600 transition" onClick={deletereqfromdb}>
           Reject
         </button>
       </div>
