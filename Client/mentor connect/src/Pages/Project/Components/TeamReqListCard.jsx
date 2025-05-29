@@ -40,7 +40,7 @@ const TeamReqListCard = (props) => {
       _id: projectId,
       Team: Username
     }
-    let api = "http://localhost:3000/api/addtoteam";
+    let api = "https://code-clique-9qgm.vercel.app/api/addtoteam";
     let container = {
       method: "POST",
       headers: {
