@@ -11,7 +11,7 @@ const Dashboard = (props) => {
   
   return (
     <div>
-      <div className="DashboardTop flex gap-6">
+      <div className="DashboardTop md:flex gap-6">
         <div className="DashboardTopLeft md:w-2/3 gap-6">
           <EcommerceMetrics id={props.id}/>
           <div className="DashboardTopLeftBottom md:gap-6 mt-6">
