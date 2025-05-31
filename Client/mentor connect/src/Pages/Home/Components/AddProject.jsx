@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AddProject = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -33,6 +34,7 @@ const AddProject = () => {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
+
     if (validateForm()) {
       let data = {
         Title: title,
@@ -41,7 +43,7 @@ const AddProject = () => {
         Keypoints: keyPoints,
         Keyskills: keySkills.split(",").map(skill => skill.trim()), // Converts comma-separated skills into an array
       };
-
+      setIsLoading(true);
       try {
         const response = await fetch("https://code-clique-9qgm.vercel.app/api/AddProject", {
           method: "POST",
@@ -54,6 +56,10 @@ const AddProject = () => {
         alert("Project added successfully!");
       } catch (error) {
         alert("Error occurred while adding project:", error);
+      }
+      finally{
+        setIsLoading(false);
+        navigate("/home");
       }
     }
   };
@@ -117,7 +123,15 @@ const AddProject = () => {
               {errors.category && <p className="text-red-500 text-sm">{errors.category}</p>}
             </div>
             <div className="mb- 4 mt-6">
-              <button type="submit" className="w-full md:w-3/10 bg-purple-600 text-white p-2 rounded-md hover:bg-purple-700 transition">Add Project</button>
+              {isLoading ? (
+                <button type="button" className="w-full md:w-3/10 bg-purple-600 text-white p-2 rounded-md cursor-not-allowed" disabled>
+                  Adding Project...
+                </button>
+              ) : (
+                <button type="submit" className="w-full md:w-3/10 bg-purple-600 text-white p-2 rounded-md hover:bg-purple-700 transition">
+                  Add Project
+                </button>
+              )}
             </div>
           </form>
         </div>
