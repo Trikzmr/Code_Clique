@@ -82,7 +82,7 @@ export default function Taskboard({ id }) {
   return (
     <div className="p-4 h-screen flex flex-col">
       <div className="flex justify-between items-center mb-4 gap-4">
-        <h2 className="text-xl font-semibold w-6/10">Kanban Board</h2>
+        <h2 className="text-xl font-semibold w-6/10">Task Board</h2>
         <button
           className="px-4 py-2 rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300 transition w-2/10"
         onClick={fetchalltask}>
@@ -105,14 +105,21 @@ export default function Taskboard({ id }) {
   );
 }
 
-function KanbanColumn({ title, tasks, bgColor, id}) {
+function KanbanColumn({ title, tasks, bgColor, id }) {
   return (
     <div className="w-1/3 p-4 bg-white rounded-2xl border border-gray-200 shadow-md max-h-full overflow-y-auto">
-      <h3 className="text-lg font-semibold">{title}</h3>
+      <div className="flex items-center justify-between mb-2">
+        <h3 className="text-lg font-semibold">{title}</h3>
+        <span className={`text-sm font-medium px-2 py-1 rounded-full ${bgColor} text-gray-700`}>
+          {tasks.length} {tasks.length === 1 ? "Task" : "Tasks"}
+        </span>
+      </div>
       <div className="mt-2 space-y-4">
         {tasks.length === 0 && <SkeletonCard />}
         {tasks.length > 0 ? (
-          tasks.map((task) => <KanbanCard key={task.id} task={task} bgColor={bgColor} id={id}/>)
+          tasks.map((task) => (
+            <KanbanCard key={task.id} task={task} bgColor={bgColor} id={id} />
+          ))
         ) : (
           <p className="text-gray-500 text-sm">No tasks</p>
         )}
@@ -120,6 +127,7 @@ function KanbanColumn({ title, tasks, bgColor, id}) {
     </div>
   );
 }
+
 
 function KanbanCard({ task, bgColor, id }) {
   return (
