@@ -1,6 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaUser, FaTag, FaLaptopCode } from 'react-icons/fa'; // Importing icons from react-icons
+import {
+  FaUserFriends,
+  FaPaperclip,
+  FaComments,
+  FaClock,
+  FaLaptopCode,
+  FaUser,
+  FaTag,
+} from 'react-icons/fa';
 
 const ProjectComponentNew = ({ project }) => {
   const { Title, username, Description, Keyskills, _id, Category } = project;
@@ -11,50 +19,58 @@ const ProjectComponentNew = ({ project }) => {
   };
 
   return (
-    <div className="bg-white border-2 border-gray-300 rounded-xl p-6 w-full max-w-md flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:scale-105">
-      {/* Title */}
-      <div>
-        <h2 className="text-2xl font-semibold text-black mb-2 truncate hover:text-gray-800 transition duration-300">{Title}</h2>
-
-        {/* Username & Category in separate lines */}
-        <div className="flex items-center text-sm text-gray-500 mb-1">
-          <FaUser className="mr-2 text-gray-600" /> {/* User icon */}
-          <span className="font-semibold">@{username}</span>
-        </div>
-        <div className="flex items-center text-sm text-gray-500">
-          <FaTag className="mr-2 text-gray-600" /> {/* Category icon */}
-          <p>{Category}</p>
+    <div className="relative w-full max-w-md">
+      {/* Floating Top Icon - Larger */}
+      <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 z-10">
+        <div className="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center shadow-md">
+          <FaLaptopCode className="text-purple-600 text-2xl" />
         </div>
       </div>
 
-      {/* Description with 3 lines */}
-      <div className="flex-grow mb-4">
-        <p className="text-sm text-gray-700 line-clamp-3 mb-4">{Description}</p>
-      </div>
+      {/* Card Body */}
+      <div className="bg-white rounded-2xl shadow-md p-5 pt-14 border border-gray-200 min-h-[320px] max-h-[320px] flex flex-col justify-between overflow-hidden">
+        <div>
+          {/* Title */}
+          <h3 className="text-lg font-semibold text-gray-800 mb-1">{Title}</h3>
 
-      {/* Skills */}
-      {Keyskills?.length > 0 && (
-        <div className="flex flex-wrap gap-2 mb-4">
-          {Keyskills.slice(0, 4).map((skill, index) => (
-            <span
-              key={index}
-              className="flex items-center text-xs text-black bg-gray-100 border border-gray-300 px-4 py-1 rounded-full hover:bg-gray-200 transition duration-200"
-            >
-              <FaLaptopCode className="mr-1 text-gray-600" /> {/* Code icon */}
-              {skill}
-            </span>
-          ))}
+          {/* Category */}
+          <div className="flex items-center text-sm text-gray-500 mb-1">
+            <FaTag className="mr-2 text-gray-400" />
+            {Category}
+          </div>
+
+          {/* Username */}
+          <div className="flex items-center text-sm text-gray-500 mb-4">
+            <FaUser className="mr-2 text-gray-400" />
+            @{username}
+          </div>
+
+          {/* Description */}
+          <p className="text-sm text-gray-600 line-clamp-3 mb-4">{Description}</p>
+
+          {/* Key Skills */}
+          {Keyskills?.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-4">
+              {Keyskills.slice(0, 4).map((skill, index) => (
+                <span
+                  key={index}
+                  className="text-xs text-purple-800 bg-purple-100 px-3 py-1 rounded-full"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
-      )}
 
-      {/* Button with improved styling and hover effect */}
-      <button
-        onClick={gotodetails}
-        className="mt-auto w-full bg-black text-white border border-black text-sm py-2 rounded-lg hover:bg-white hover:text-black hover:border-2 hover:border-black transition-all duration-300 ease-in-out transform hover:scale-105"
-      >
-        <FaLaptopCode className="mr-2 inline-block" /> {/* Icon for the button */}
-        View Details
-      </button>
+        {/* View Details Button */}
+        <button
+          onClick={gotodetails}
+          className="w-full text-sm py-2 rounded-xl text-purple-600 bg-purple-100 hover:bg-purple-200 transition"
+        >
+          View Details
+        </button>
+      </div>
     </div>
   );
 };
