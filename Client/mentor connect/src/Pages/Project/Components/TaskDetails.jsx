@@ -36,7 +36,7 @@ const TaskDetails = ({proid}) => {
     }
 
     const deletetask = async()=>{
-        const api = "http://localhost:3000/api/deleteTask";
+        const api = "https://code-clique-9qgm.vercel.app/api/deleteTask";
         const container = {
             method: "POST",
             headers: {
