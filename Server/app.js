@@ -53,7 +53,9 @@ app.use(express.json());
 app.use(cookieParser());
 
 // MongoDB Connection
-require("./db/conn");
+const connectDB = require("./db/conn");
+connectDB();
+
 
 
 // Import and initialize Socket.IO
