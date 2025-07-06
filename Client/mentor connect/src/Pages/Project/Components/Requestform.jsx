@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const RequestForm = () => {
   const { id: projectid } = useParams();
@@ -11,12 +12,24 @@ const RequestForm = () => {
     skills: "",
   });
 
+  const [loading, setLoading] = useState(false); // <-- Loading state
+
   const handleChange = (e) => {
     const { id, value } = e.target;
     setForm((prev) => ({ ...prev, [id]: value }));
   };
 
+  const clearFormInputs = () => {
+    setForm({
+      message: "",
+      publicProfileLink: "",
+      projectLink: "",
+      skills: "",
+    });
+  };
+
   const sendRequest = async (role) => {
+    setLoading(true); // Start loading
     const payload = {
       projectId: projectid,
       role,
@@ -36,16 +49,25 @@ const RequestForm = () => {
         credentials: "include",
       });
       const data = await res.json();
-      console.log(data);
+      if (res.ok) {
+        toast.success("✅ Task created successfully!");
+        clearFormInputs(); // Clear the form on success
+      } else {
+        toast.error("❌ Failed to create task.");
+      }
     } catch (err) {
       console.error(err);
+      toast.error("❌ Something went wrong.");
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
 
   return (
-    <div className="overflow-hidden rounded-2xl min-w-full border border-gray-200 bg-white px-4 pb-3 pt-4 sm:px-6 ">
+    <div className="overflow-hidden rounded-2xl min-w-full border border-gray-200 bg-white px-4 pb-3 pt-4 sm:px-6">
       <form className="w-full rounded-2xl p-6 space-y-4">
         <h1 className="text-2xl font-semibold text-center">Join Project</h1>
+
         <div className="space-y-2">
           <label htmlFor="publicProfileLink" className="block text-sm font-medium">Public Profile Link</label>
           <input
@@ -96,9 +118,15 @@ const RequestForm = () => {
               e.preventDefault();
               sendRequest("Developer");
             }}
-            className="flex-1 border-2 border-black px-4 py-2 rounded-md hover:bg-black hover:text-white transition"
+            className="flex-1 border-2 border-black px-4 py-2 rounded-md transition"
+            disabled={loading} // <-- disable button during loading
+            style={{
+              backgroundColor: loading ? "#d1d5db" : "",
+              color: loading ? "#6b7280" : "",
+              cursor: loading ? "not-allowed" : "pointer",
+            }}
           >
-            Join as Developer
+            {loading ? "Sending..." : "Join as Developer"}
           </button>
         </div>
       </form>
