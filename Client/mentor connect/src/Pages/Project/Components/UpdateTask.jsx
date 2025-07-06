@@ -56,7 +56,7 @@ const UpdateTask = ({ id }) => {
   // Send data to update task
   const sendData = async () => {
     try {
-      const res = await fetch('http://localhost:3000/api/UpdateTask', {
+      const res = await fetch('https://code-clique-9qgm.vercel.app/api/UpdateTask', {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

@@ -20,7 +20,6 @@ const ProjectDashboard = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
     const fetchapi = async () => {
-        console.log("test");
         try {
             let response = await fetch(`https://code-clique-9qgm.vercel.app/api/getpostdatabyid`, {
                 method: "POST",
