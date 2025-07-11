@@ -10,6 +10,7 @@ import TaskDetails from './Components/TaskDetails';
 import ProjectOverview from './Components/ProjectOverview';
 import { useNavigate } from 'react-router-dom';
 import Base from './Components/Base';
+import Phases from './Components/Phases';
 
 
 const ProjectDashboard = () => {
@@ -69,6 +70,10 @@ const ProjectDashboard = () => {
                         Overview
                     </NavLink>
 
+                    <NavLink to={`/project/${id}/objectives`} className={({ isActive }) => navLinkClass(isActive)}>
+                        Objectives
+                    </NavLink>
+
                     <NavLink to={`/project/${id}/taskboard`} className={({ isActive }) => navLinkClass(isActive)}>
                         Tasks
                     </NavLink>
@@ -106,6 +111,7 @@ const ProjectDashboard = () => {
                     <Route path="/messages" element={<Messages id={id} />} />
                     <Route path="/addtask" element={<MyTask id={id} />} />
                     <Route path="/team" element={<Team id={id} />} />
+                    <Route path="/objectives" element={<Phases id={id}/>} />
                     <Route path="/taskboard" element={<Taskboard id={id} />} />
                     <Route path="/task/:id/*" element={<TaskDetails proid={id} />} />
                 </Routes>

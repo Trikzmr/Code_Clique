@@ -3,46 +3,7 @@ import { ApexOptions } from "apexcharts";
 import { useEffect, useState } from "react";
 
 export default function MonthlyTarget(props) {
-
-
-  const [taskList, setTaskList] = useState([]);
-  const [CompletedTask, setCompletedTask] =useState([]);
-  const [rate, setRate] = useState(0);
-  let projectid = props.id;
-    
-  const getTaskList = async() => {
-      const container = {
-          method: "POST",
-          headers: {
-              "content-type": "application/json",
-          },
-          body: JSON.stringify({ ProjectId: projectid }),
-      }
-      try {
-          const res = await fetch('https://code-clique-9qgm.vercel.app/api/FindTaskByProjectId', container);
-          const data = await res.json();
-          setCompletedTask(data.filter((task) => task.Status === "Completed"));
-          setTaskList(data);
-      } catch (error) {
-          console.log(error);
-      }
-  }
-    
-  const onload = () => {
-      getTaskList();
-  }
-
-  useEffect(() => {
-    if (taskList.length > 0) {
-        setRate(Math.round((CompletedTask.length / taskList.length) * 100));
-    }
-}, [taskList, CompletedTask]);
-  useEffect(onload, []);
-
-
-
-
-  const series = [rate];
+  const series = [50];
   const options: ApexOptions = {
     colors: ["#465FFF"],
     chart: {
@@ -63,7 +24,7 @@ export default function MonthlyTarget(props) {
         track: {
           background: "#E4E7EC",
           strokeWidth: "100%",
-          margin: 5, // margin is in pixels
+          margin: 5,
         },
         dataLabels: {
           name: {
@@ -129,7 +90,7 @@ export default function MonthlyTarget(props) {
             TODO
           </p>
           <p className="flex items-center justify-center gap-1 text-base font-semibold text-gray-800 sm:text-lg">
-            {taskList.length - CompletedTask.length}
+            {25}
             <svg
               width="16"
               height="16"
@@ -154,7 +115,7 @@ export default function MonthlyTarget(props) {
             Completed
           </p>
           <p className="flex items-center justify-center gap-1 text-base font-semibold text-gray-800 sm:text-lg">
-            {CompletedTask.length}
+            {15}
             <svg
               width="16"
               height="16"
@@ -179,7 +140,7 @@ export default function MonthlyTarget(props) {
             Total
           </p>
           <p className="flex items-center justify-center gap-1 text-base font-semibold text-gray-800 sm:text-lg">
-            {taskList.length}
+            {35}
             <svg
               width="16"
               height="16"
