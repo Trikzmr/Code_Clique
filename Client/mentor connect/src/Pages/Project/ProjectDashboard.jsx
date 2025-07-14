@@ -10,7 +10,7 @@ import TaskDetails from './Components/TaskDetails';
 import ProjectOverview from './Components/ProjectOverview';
 import { useNavigate } from 'react-router-dom';
 import Base from './Components/Base';
-import Phases from './Components/Phases';
+import Objectives from './Components/Objectives';
 
 
 const ProjectDashboard = () => {
@@ -34,7 +34,7 @@ const ProjectDashboard = () => {
                 navigate('/unauthorized'); // Redirect to login if not authenticated
             }
             let data = await response.json();
-            console.log(data);
+            console.log(data)
             setproject(data);
 
         } catch (err) {
@@ -111,7 +111,7 @@ const ProjectDashboard = () => {
                     <Route path="/messages" element={<Messages id={id} />} />
                     <Route path="/addtask" element={<MyTask id={id} />} />
                     <Route path="/team" element={<Team id={id} />} />
-                    <Route path="/objectives" element={<Phases id={id}/>} />
+                    <Route path="/objectives" element={<Objectives id={id} data={project}/>} />
                     <Route path="/taskboard" element={<Taskboard id={id} />} />
                     <Route path="/task/:id/*" element={<TaskDetails proid={id} />} />
                 </Routes>
