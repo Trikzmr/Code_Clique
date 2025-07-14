@@ -28,3 +28,5 @@ const updateController = async (req, res) => {
 };
 
 api.put('/updatePhaseDetails', updateController);
+
+module.exports = api;

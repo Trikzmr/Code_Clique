@@ -21,3 +21,5 @@ const apicontroller = async (req, res) => {
 };
 
 api.post('/getPhaseDetails', apicontroller);
+
+module.exports = api;
