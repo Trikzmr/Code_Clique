@@ -8,6 +8,8 @@ const updateTask = async (req, res) => {
     const { Username } = req.user;
  
     try {
+        const connectDB = require("../db/conn");
+    await connectDB(); 
         const task = await Task.findOne({ _id: TaskId});
 
         if (!task) {

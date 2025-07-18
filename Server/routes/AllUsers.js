@@ -6,6 +6,8 @@ const mongo = require('../model/userModel');
  
  async function api(req,res){
     try {
+        const connectDB = require("../db/conn");
+    await connectDB(); 
         let data = await mongo.find();
         console.log(data);
         res.json(data);

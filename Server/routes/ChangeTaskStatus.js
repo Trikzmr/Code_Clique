@@ -4,6 +4,8 @@ const api = express.Router();
 
 const apicall = async (req, res) => {
   try {
+    const connectDB = require("../db/conn");
+    await connectDB(); 
     const { _id, status } = req.body;
 
     // Validate input

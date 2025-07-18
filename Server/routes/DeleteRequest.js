@@ -7,6 +7,8 @@ const Authentication = require('../Middleware/Authentication'); // Import the au
 const api = async(req, res) => {
     
     try {
+        const connectDB = require("../db/conn");
+    await connectDB(); 
         const {_id} = req.body;
         console.log(_id);
         const result = await requestModel.findByIdAndDelete(_id);

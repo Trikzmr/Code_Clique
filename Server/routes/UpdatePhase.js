@@ -5,6 +5,8 @@ const api = express.Router();
 
 const updateController = async (req, res) => {
     try {
+        const connectDB = require("../db/conn");
+    await connectDB(); 
         const data = req.body;
 
         if (!data.id) {

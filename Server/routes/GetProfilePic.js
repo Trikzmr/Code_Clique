@@ -5,6 +5,8 @@ const api = express.Router();
 
 const apicall = async(req, res) =>{
     try {
+        const connectDB = require("../db/conn");
+    await connectDB(); 
         const {username} = req.body;
         const image = await imageModel.findOne({username});
         if (!image) {

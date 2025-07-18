@@ -8,6 +8,8 @@ router.get('/getpostdata',authenticate, api)
 async function api(req,res){
     let username = req.user.Username
     try {
+        const connectDB = require("../db/conn");
+    await connectDB(); 
         let data = await post.find();
         let filterdata = [];
         for(let i = 0; i<data.length; i++){

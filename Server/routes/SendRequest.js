@@ -9,6 +9,8 @@ const api = async(req, res)=>{ // Create an asynchronous function called api
     const {projectId, skills, message, publicProfileLink, projectLink, role} = req.body; // Get the projectId, skills, message, publicProfileLink and projectLink from the request
 
     try {
+        const connectDB = require("../db/conn");
+    await connectDB(); 
         const request = new requestModel({ // Create a new request
             projectId, 
             skills,

@@ -5,6 +5,8 @@ const api = express.Router();
 
 const apicontroller = async (req, res) => {
     try {
+        const connectDB = require("../db/conn");
+    await connectDB(); 
         const { id, Title } = req.body;
 
         let response = await Model.findOne({ id });

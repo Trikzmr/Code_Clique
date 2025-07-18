@@ -9,6 +9,8 @@ async function api(req, res) {
     const { _id } = req.body;
     const { Username } = req.user;
     try {
+        const connectDB = require("../db/conn");
+    await connectDB(); 
         let user = await data.findOne({ _id });
         const userObj = user.toObject(); // Convert to plain object
         userObj.Team.push(user.username); // Still need this?

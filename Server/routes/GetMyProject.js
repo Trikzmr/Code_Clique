@@ -10,6 +10,8 @@ router.get('/getmyproject',authenticate, api)
 
 async function api(req,res){
     try {
+        const connectDB = require("../db/conn");
+    await connectDB(); 
         let team = await post.find({Team: { $in: [req.user.Username] }}); // Find all posts where the user is in the team
         let mentor = await post.find({Mentor: { $in: [req.user.Username] }}); // Find all posts where the user is the mentor
         let owner = await post.find({username: req.user.Username}); // Find all posts where the user is the owner
