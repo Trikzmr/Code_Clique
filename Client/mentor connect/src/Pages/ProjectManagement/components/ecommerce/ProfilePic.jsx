@@ -22,7 +22,7 @@ const ProfilePic = ({data}) => {
     //     }
     // }
     const func = ()=>{
-        apicall();
+        //apicall();
     }
     useEffect(func, []);
     return (
