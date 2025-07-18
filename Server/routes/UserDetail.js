@@ -10,6 +10,8 @@ const apicall = async (req, res) => {
     const {Username} = req.user;
 
     try{
+        const connectDB = require("../db/conn");
+    await connectDB(); 
         const user = await User.findOne({Username});
         if(!user){
             return res.status(404).json({message: "User not found"});

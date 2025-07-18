@@ -6,6 +6,8 @@ router.post('/addtoteam', async (req, res) => {
     const { _id, Team } = req.body; 
   
     try {
+      const connectDB = require("../db/conn");
+    await connectDB(); 
       const updatedPost = await project.findOneAndUpdate(
         { _id}, 
         { $addToSet: { Team } }, 

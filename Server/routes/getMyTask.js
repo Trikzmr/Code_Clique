@@ -9,6 +9,8 @@ const apicall = async (req, res) => {
 
 
     try {
+        const connectDB = require("../db/conn");
+    await connectDB(); 
         const task = await Task.find({ProjectId});
         const filtertask = task.filter((task) => {
             return task.Members.includes(Username);

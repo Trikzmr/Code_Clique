@@ -10,6 +10,8 @@ const cookieParser = require("cookie-parser");
  const api = async(req, res) => {
     const { Email, Password } = req.body;
     try {
+      const connectDB = require("../db/conn");
+    await connectDB(); 
         // Check if user exists
         const user = await User.findOne({ Email });
         if (!user) {

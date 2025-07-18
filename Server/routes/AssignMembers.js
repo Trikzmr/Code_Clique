@@ -11,6 +11,8 @@ const apicall = async (req, res) => {
     }
 
     try {
+        const connectDB = require("../db/conn");
+    await connectDB(); 
         // Update the Members array in the database
         const updatedTask = await Task.findByIdAndUpdate(
             _id,

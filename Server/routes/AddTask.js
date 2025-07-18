@@ -7,7 +7,8 @@ const apicall = async (req, res) =>{
     const { ProjectId, Title, Description, ProjectOwner, StartDate, EndDate, Status, Members, Keypoints } = req.body;
     const{Username} = req.user;
     try{
-
+        const connectDB = require("../db/conn");
+        await connectDB(); 
         
         const task = new Task({
             ProjectId, Title, Description, ProjectOwner, StartDate, EndDate, Status , Username, Members, Keypoints

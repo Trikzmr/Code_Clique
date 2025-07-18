@@ -7,6 +7,8 @@ const apicreate = async(req, res) => {
     
     const {Username} = req.body;
     try {
+        const connectDB = require("../db/conn");
+    await connectDB(); 
         let finduser = await User.findOne({Username});
         
 

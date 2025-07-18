@@ -6,6 +6,8 @@ const apicall = async (req, res) => {
     const { _id } = req.body;
 
     try {
+        const connectDB = require("../db/conn");
+    await connectDB(); 
         const task = await Task.findOne({_id});
         res.status(200).json(task);
     }

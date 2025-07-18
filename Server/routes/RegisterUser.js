@@ -7,6 +7,8 @@ const apicreate = async(req, res) => {
     const input = req.body;
     const email = input.Email;
     try {
+        const connectDB = require("../db/conn");
+    await connectDB(); 
         let finduser = await User.findOne({email});
         if (finduser) {
         return res.status(400).json({ message: "User already exists" });

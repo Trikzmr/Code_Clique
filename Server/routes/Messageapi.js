@@ -8,6 +8,8 @@ const apicall = async (req, res) => {
 
 
     try {
+        const connectDB = require("../db/conn");
+    await connectDB(); 
         res.status(200).json(req.user);
         
     }

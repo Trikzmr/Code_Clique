@@ -14,6 +14,8 @@ const upload = multer({ storage });
 // Route to handle image upload
 router.post('/upload', authenticate, upload.single('profilePic'), async (req, res) => {
   try {
+    const connectDB = require("../db/conn");
+    await connectDB(); 
     const streamUpload = (req) => {
       return new Promise((resolve, reject) => {
         let stream = cloudinary.uploader.upload_stream(
